@@ -7,21 +7,35 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.PWMVictorSPX;
+import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
+import edu.wpi.first.wpilibj.PWMVictorSPX;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 /**
  * The VM is configured to automatically run this class, and to call the
- * functions corresponding to each mode, as described in the IterativeRobot
+ * functions corresponding to each mode, as described in the TimedRobot
  * documentation. If you change the name of this class or the package after
  * creating this project, you must also update the build.gradle file in the
  * project.
  */
-public class Robot extends IterativeRobot {
+public class Robot extends TimedRobot {
   private static final String kDefaultAuto = "Default";
   private static final String kCustomAuto = "My Auto";
   private String m_autoSelected;
+  private static final XboxController Logitech = new XboxController(0);
+  private static final PWMVictorSPX motor1 = new PWMVictorSPX(0);
+  private static final PWMVictorSPX motor2 = new PWMVictorSPX(1);
+  private static final PWMVictorSPX motor3 = new PWMVictorSPX(2);
+  private static final PWMVictorSPX motor4 = new PWMVictorSPX(3);
+  SpeedControllerGroup leftmotors = new SpeedControllerGroup(motor1, motor2);  
+  SpeedControllerGroup rightmotors = new SpeedControllerGroup(motor3, motor4);
+  DifferentialDrive maindrive = new DifferentialDrive(leftmotors, rightmotors);
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
 
   /**
@@ -61,8 +75,7 @@ public class Robot extends IterativeRobot {
   @Override
   public void autonomousInit() {
     m_autoSelected = m_chooser.getSelected();
-    // autoSelected = SmartDashboard.getString("Auto Selector",
-    // defaultAuto);
+    // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
     System.out.println("Auto selected: " + m_autoSelected);
   }
 
@@ -87,6 +100,10 @@ public class Robot extends IterativeRobot {
    */
   @Override
   public void teleopPeriodic() {
+    Logitech.getX(Hand.kLeft);
+    double AnalogXplus=Logitech.getX(Hand.kLeft);
+    maindrive.arcadeDrive(AnalogXplus, 0.0);
+
   }
 
   /**
