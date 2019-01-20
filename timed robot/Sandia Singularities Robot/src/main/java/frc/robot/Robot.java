@@ -13,7 +13,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
-import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
@@ -100,9 +99,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    Logitech.getX(Hand.kLeft);
-    double AnalogXplus=Logitech.getX(Hand.kLeft);
-    maindrive.arcadeDrive(AnalogXplus, 0.0);
+    double AnalogYplus=Logitech.getY(Hand.kLeft);
+    maindrive.arcadeDrive(AnalogYplus, 0.0);
 
   }
 
