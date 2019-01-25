@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.cameraserver.CameraServer;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -27,7 +28,7 @@ public class Robot extends TimedRobot {
   private static final String kDefaultAuto = "Default";
   private static final String kCustomAuto = "My Auto";
   private String m_autoSelected;
-  private static final XboxController Logitech = new XboxController(0);
+  private static final XboxController logitech = new XboxController(0);
   private static final PWMVictorSPX motor1 = new PWMVictorSPX(0);
   private static final PWMVictorSPX motor2 = new PWMVictorSPX(1);
   private static final PWMVictorSPX motor3 = new PWMVictorSPX(2);
@@ -46,6 +47,9 @@ public class Robot extends TimedRobot {
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
+    CameraServer Camera = CameraServer.getInstance();
+    Camera.startAutomaticCapture("cam0", 0);
+  
   }
 
   /**
@@ -99,9 +103,9 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    double AnalogYplus=Logitech.getY(Hand.kLeft);
-    maindrive.arcadeDrive(AnalogYplus, 0.0);
-
+    double analogLY=logitech.getY(Hand.kLeft);
+    double analogLX=logitech.getX(Hand.kLeft);
+    maindrive.arcadeDrive(analogLY, analogLX);
   }
 
   /**
