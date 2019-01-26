@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.cscore.VideoSource;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -47,8 +48,8 @@ public class Robot extends TimedRobot {
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
-    CameraServer Camera = CameraServer.getInstance();
-    Camera.startAutomaticCapture("cam0", 0);
+    CameraServer camera = CameraServer.getInstance();
+    camera.startAutomaticCapture("cam0", 0);
   
   }
 
