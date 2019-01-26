@@ -9,13 +9,15 @@ import edu.wpi.first.wpilibj.PWM;
 
 
 public class Lift extends TimedRobot {
-    private static final PWMTalonSRX motor6 = new PWMTalonSRX(7);
-    private static final PWMTalonSRX motor7 = new PWMTalonSRX(8);
+    private static final PWMTalonSRX motor5 = new PWMTalonSRX(4);
+    private static final PWMTalonSRX motor6 = new PWMTalonSRX(5);
     private static final XboxController logitech2 = new XboxController(1);
-    SpeedControllerGroup liftmotors = new SpeedControllerGroup(motor6, motor7);
+    //SpeedControllerGroup liftmotors = new SpeedControllerGroup(motor6, motor7);
+    PWM liftmotor = new PWM(1);
     
 
     public void teleopPeriodic() {
-        double analogLY=logitech2.getY(Hand.kLeft);   
+        double analogLY=logitech2.getY(Hand.kLeft);
+        liftmotor.setSpeed(analogLY);
     }
 }
