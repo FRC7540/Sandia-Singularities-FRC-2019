@@ -16,7 +16,6 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.cameraserver.CameraServer;
-import edu.wpi.cscore.VideoSource;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -106,7 +105,8 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     double analogLY=logitech1.getY(Hand.kLeft);
     double analogLX=logitech1.getX(Hand.kLeft);
-    maindrive.arcadeDrive(analogLY, analogLX);
+    double forwardDrive = analogLY * -1;
+    maindrive.arcadeDrive(forwardDrive, analogLX);
   }
 
   /**
