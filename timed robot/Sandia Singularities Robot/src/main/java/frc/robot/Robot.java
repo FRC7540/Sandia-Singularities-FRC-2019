@@ -7,15 +7,9 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.GenericHID.Hand;
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.cameraserver.CameraServer;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -28,14 +22,6 @@ public class Robot extends TimedRobot {
   private static final String kDefaultAuto = "Default";
   private static final String kCustomAuto = "My Auto";
   private String m_autoSelected;
-  private static final XboxController logitech1 = new XboxController(0);
-  private static final PWMVictorSPX motor1 = new PWMVictorSPX(0);
-  private static final PWMVictorSPX motor2 = new PWMVictorSPX(1);
-  private static final PWMVictorSPX motor3 = new PWMVictorSPX(2);
-  private static final PWMVictorSPX motor4 = new PWMVictorSPX(3);
-  SpeedControllerGroup leftmotors = new SpeedControllerGroup(motor1, motor2);  
-  SpeedControllerGroup rightmotors = new SpeedControllerGroup(motor3, motor4);
-  DifferentialDrive maindrive = new DifferentialDrive(leftmotors, rightmotors);
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
 
   /**
@@ -46,10 +32,6 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("My Auto", kCustomAuto);
-    SmartDashboard.putData("Auto choices", m_chooser);
-    CameraServer camera = CameraServer.getInstance();
-    camera.startAutomaticCapture("cam0", 0);
-  
   }
 
   /**
@@ -103,10 +85,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    double analogLY=logitech1.getY(Hand.kLeft);
-    double analogLX=logitech1.getX(Hand.kLeft);
-    double forwardDrive = analogLY * -1;
-    maindrive.arcadeDrive(forwardDrive, analogLX);
   }
 
   /**
