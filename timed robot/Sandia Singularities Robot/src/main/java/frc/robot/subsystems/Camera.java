@@ -12,6 +12,7 @@ import edu.wpi.first.cameraserver.CameraServer;
 
 /**
  * Add your docs here.
+ * This handles all the camera stuff... I think...
  */
 public class Camera extends Subsystem {
   // Put methods for controlling this subsystem

@@ -18,6 +18,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * creating this project, you must also update the build.gradle file in the
  * project.
  */
+
+/**By popular demand this robot will be named "Tiny Bot Tim" -Software
+ * Big Chungus will also be considered
+ * Please help this robot find its purpose, it doesn't want to spend its life passing butter
+ */
 public class Robot extends TimedRobot {
   private static final String kDefaultAuto = "Default";
   private static final String kCustomAuto = "My Auto";

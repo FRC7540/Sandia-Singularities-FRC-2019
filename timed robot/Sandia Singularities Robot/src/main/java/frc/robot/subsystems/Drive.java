@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 /**
  * Add your docs here.
+ * For the dumb people: this makes the robot drive... yay.
  */
 public class Drive extends Subsystem {
   // Put methods for controlling this subsystem

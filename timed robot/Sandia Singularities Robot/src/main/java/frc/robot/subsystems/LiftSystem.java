@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.PWM;
 
 /**
  * Add your docs here.
+ * This makes the claw go up and down... woah...
  */
 public class LiftSystem extends Subsystem {
   // Put methods for controlling this subsystem
