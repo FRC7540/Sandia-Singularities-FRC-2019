@@ -23,9 +23,8 @@ public class Camera extends Subsystem {
     // setDefaultCommand(new MySpecialCommand());
   }
 
-  public void addCamera() [
-    SmartDashboard.putData("Auto choices", m_chooser);
+  public void addCamera() {
     CameraServer camera = CameraServer.getInstance();
     camera.startAutomaticCapture("cam0", 0);
-  ]
+  }
 }
