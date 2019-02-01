@@ -26,6 +26,7 @@ public class LiftSystem extends Subsystem {
   private static final XboxController logitech2 = new XboxController(1);
   // SpeedControllerGroup liftmotors = new SpeedControllerGroup(motor6, motor7);
   PWM liftmotor = new PWM(1);
+  double currentLvl = 0;
 
   @Override
   public void initDefaultCommand() {
@@ -43,15 +44,34 @@ public class LiftSystem extends Subsystem {
     boolean buttonB = logitech2.getBButton();
     boolean buttonX = logitech2.getXButton();
     boolean buttonY = logitech2.getYButton();
+  }
 
-    // if statements for preset elevator positions
-    if (buttonA == true)
-      ;
-    if (buttonB == true)
-      ;
-    if (buttonX == true)
-      ;
-    if (buttonY == true)
-      ;
+  public double calcDiff(double curr, double des) {
+    double diff = des - curr;
+    return diff;
+  }
+
+  public double desiredPos(int buttonInput) {
+    if (buttonInput == 0)
+       return (double)0.0;
+    else if (buttonInput == 1)
+      return (double)10.0;
+    else if (buttonInput == 2)
+      return (double)20.0;
+    else if (buttonInput == 3)
+      return (double)30.0;
+  }
+
+  public double getCurrentLvl() {
+    return currentLvl;
+  }
+
+  public void updateCurrentLvl(double diff) {
+    double temp = currentLvl + diff;
+    currentLvl = temp;
+  }
+
+  public void setLevel(double diff) {
+    //Convert rotations to distance and tell that to motor
   }
 }
