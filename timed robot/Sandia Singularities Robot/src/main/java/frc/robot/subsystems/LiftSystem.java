@@ -50,7 +50,7 @@ public class LiftSystem extends Subsystem {
   }
 
   public double desiredPos(double des) {
-    // Convert rotations to distance
+    /* Convert rotations to distance
     double tickDistance = 0;
     encoder1.setDistancePerPulse(tickDistance);
     encoder2.setDistancePerPulse(tickDistance);
@@ -59,15 +59,16 @@ public class LiftSystem extends Subsystem {
     double level2Dist = 10*distance;
     double level3Dist = 20*distance;
     double level4Dist = 30*distance;
+    */
     // Get desired distance from buttonz
     if (logitech2.getAButton() == true)
-       return level1Dist;
+       return 0;
     else if (logitech2.getBButton() == true)
-      return level2Dist;
+      return 10;
     else if (logitech2.getXButton() == true)
-      return level3Dist;
+      return 20;
     else if (logitech2.getYButton() == true)
-      return level4Dist;
+      return 30;
     else
       return currentLvl;
   }
