@@ -11,6 +11,8 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.LiftSystemLvl1Command;
+import frc.robot.commands.LiftSystemLvl3Command;
+import frc.robot.commands.LiftSystemLvl4Command;
 
 /**
  * Add your docs here.
@@ -18,7 +20,9 @@ import frc.robot.commands.LiftSystemLvl1Command;
 public class IO {
 
     public IO () {
-        driverButtonA.whenPressed(new LiftSystemLvl1Command());
+		driverButtonA.whenPressed(new LiftSystemLvl1Command());
+		driverButtonX.whenPressed(new LiftSystemLvl3Command());
+		driverButtonY.whenPressed(new LiftSystemLvl4Command());
     }
 
     private static final int LEFT_HORIZ_AXIS = 0;
