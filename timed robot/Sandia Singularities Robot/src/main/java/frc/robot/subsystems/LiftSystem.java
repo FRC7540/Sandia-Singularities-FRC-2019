@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.PWMTalonSRX;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.PWM;
+import edu.wpi.first.wpilibj.Encoder;
 
 /**
  * Add your docs here.
@@ -24,6 +25,9 @@ public class LiftSystem extends Subsystem {
   private static final PWMTalonSRX motor5 = new PWMTalonSRX(4);
   private static final PWMTalonSRX motor6 = new PWMTalonSRX(5);
   private static final XboxController logitech2 = new XboxController(1);
+  private static final Encoder encoder1 = new Encoder(0, 0);
+  private static final Encoder encoder2 = new Encoder(1, 1);
+
   // SpeedControllerGroup liftmotors = new SpeedControllerGroup(motor6, motor7);
   PWM liftmotor = new PWM(1);
   double currentLvl = 0;
@@ -38,12 +42,6 @@ public class LiftSystem extends Subsystem {
     // creates and uses analog stick for manual elevator positioning
     double analogLY = logitech2.getY(Hand.kLeft);
     liftmotor.setSpeed(analogLY);
-
-    // creates A,B,X, and Y buttons to use for preset elevator positions
-    boolean buttonA = logitech2.getAButton();
-    boolean buttonB = logitech2.getBButton();
-    boolean buttonX = logitech2.getXButton();
-    boolean buttonY = logitech2.getYButton();
   }
 
   public double calcDiff(double curr, double des) {
@@ -51,15 +49,17 @@ public class LiftSystem extends Subsystem {
     return diff;
   }
 
-  public double desiredPos(int buttonInput) {
-    if (buttonInput == 0)
-       return (double)0.0;
-    else if (buttonInput == 1)
-      return (double)10.0;
-    else if (buttonInput == 2)
-      return (double)20.0;
-    else if (buttonInput == 3)
-      return (double)30.0;
+  public double desiredPos() {
+    if (logitech2.getAButton() == true)
+       return 0.0;
+    else if (logitech2.getBButton() == true)
+      return 10.0;
+    else if (logitech2.getXButton() == true)
+      return 20.0;
+    else if (logitech2.getYButton() == true)
+      return 30.0;
+    else
+      return currentLvl;
   }
 
   public double getCurrentLvl() {
@@ -73,5 +73,8 @@ public class LiftSystem extends Subsystem {
 
   public void setLevel(double diff) {
     //Convert rotations to distance and tell that to motor
+    double tickDistance = 0;
+    encoder1.setDistancePerPulse(tickDistance);
+    encoder2.
   }
 }
