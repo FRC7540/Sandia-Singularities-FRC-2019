@@ -13,14 +13,11 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.Ultrasonic;
 
-/**
- * Add your docs here.
- * For the dumb people: this makes the robot drive... yay.
- */
-public class Drive extends Subsystem {
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
+//adding motors and the ultrasonic sensor
+public class Thirdeye extends Subsystem {
+  Ultrasonic thirdeye = new Ultrasonic(1,1);
   private static final XboxController logitech1 = new XboxController(0);
   private static final PWMVictorSPX motor1 = new PWMVictorSPX(0);
   private static final PWMVictorSPX motor2 = new PWMVictorSPX(1);
@@ -36,11 +33,15 @@ public class Drive extends Subsystem {
     // setDefaultCommand(new MySpecialCommand());
   }
 
-  public void driveSystem() {
-    double analogLY = logitech1.getY(Hand.kLeft);
-    double analogLX = logitech1.getX(Hand.kLeft);
-    double forwardDrive = analogLY * -1;
-    maindrive.arcadeDrive(forwardDrive, analogLX);
+  public void robotInit() {
+    thirdeye.setAutomaticMode(true);
   }
 
-}
+  public void ultrasonicSample() {
+    double range = thirdeye.getRangeInches();
+    double analogLY = logitech1.getY(Hand.kLeft);
+    if (range == 5)
+      double forwardDrive = analogLY / -range;
+      maindrive.arcadeDrive(forwardDrive, analogLX);
+  }
+}  
