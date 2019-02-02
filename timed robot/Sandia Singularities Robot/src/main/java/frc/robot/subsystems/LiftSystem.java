@@ -27,8 +27,7 @@ public class LiftSystem extends Subsystem {
   private static final XboxController logitech2 = new XboxController(1);
   private static final Encoder encoder1 = new Encoder(0, 0);
   private static final Encoder encoder2 = new Encoder(1, 1);
-
-  // SpeedControllerGroup liftmotors = new SpeedControllerGroup(motor6, motor7);
+  SpeedControllerGroup liftmotors = new SpeedControllerGroup(motor5, motor6);
   PWM liftmotor = new PWM(1);
   double currentLvl = 0;
 

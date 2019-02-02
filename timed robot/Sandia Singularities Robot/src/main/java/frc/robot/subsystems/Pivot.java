@@ -15,13 +15,20 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
 /**
  * Add your docs here.
  */
-public class CagePivot extends Subsystem {
+public class Pivot extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
+    private static final XboxController logitech2 = new XboxController(1);
+    private static final PWMTalonSRX motor7 = new PWMTalonSRX(6);
 
     @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
+  }
+
+  public void pivotControl() {
+    boolean bumperL = logitech2.getBumper(Hand.kLeft);
+    boolean bumperR = logitech2.getBumper(Hand.kRight);
   }
 }
