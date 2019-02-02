@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.DriveCommand;
 import frc.robot.subsystems.Drive;
+import frc.robot.subsystems.LiftSystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -27,12 +28,14 @@ import frc.robot.subsystems.Drive;
  * Please help this robot find its purpose, it doesn't want to spend its life passing butter
  */
 public class Robot extends TimedRobot {
+  public static final IO controllerBinding = new IO();
   private static final String kDefaultAuto = "Default";
   private static final String kCustomAuto = "My Auto";
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
 
   public static final Drive driveSubsystem = new Drive();
+  public static final LiftSystem liftSubsystem = new LiftSystem();
 
   /**
    * This function is run when the robot is first started up and should be used

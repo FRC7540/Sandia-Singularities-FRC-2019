@@ -10,11 +10,17 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.LiftSystemLvl1Command;
 
 /**
  * Add your docs here.
  */
 public class IO {
+
+    public IO () {
+        driverButtonA.whenPressed(new LiftSystemLvl1Command());
+    }
+
     private static final int LEFT_HORIZ_AXIS = 0;
 	private static final int LEFT_VERT_AXIS = 1;
 	private static final int RIGHT_HORIZ_AXIS = 4;
