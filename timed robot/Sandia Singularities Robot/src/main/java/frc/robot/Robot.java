@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.DriveCommand;
 import frc.robot.subsystems.Drive;
 import frc.robot.subsystems.LiftSystem;
+import edu.wpi.first.cameraserver.CameraServer;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -49,6 +50,8 @@ public class Robot extends TimedRobot {
     SmartDashboard.putData("Auto choices", m_chooser);
     DriveCommand cmd = new DriveCommand();
     cmd.start();
+    CameraServer camera = CameraServer.getInstance();
+    camera.startAutomaticCapture("cam0", 0);
   }
 
   /**
