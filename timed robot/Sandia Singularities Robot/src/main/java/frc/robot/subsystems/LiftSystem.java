@@ -75,6 +75,7 @@ public class LiftSystem extends Subsystem {
     //Convert rotations to distance and tell that to motor
     double tickDistance = 0;
     encoder1.setDistancePerPulse(tickDistance);
-    encoder2.
+    encoder2.setDistancePerPulse(tickDistance);
+    
   }
 }
