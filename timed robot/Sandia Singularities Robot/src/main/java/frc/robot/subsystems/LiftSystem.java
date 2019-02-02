@@ -49,15 +49,25 @@ public class LiftSystem extends Subsystem {
     return diff;
   }
 
-  public double desiredPos() {
+  public double desiredPos(double des) {
+    // Convert rotations to distance
+    double tickDistance = 0;
+    encoder1.setDistancePerPulse(tickDistance);
+    encoder2.setDistancePerPulse(tickDistance);
+    double distance = encoder1.getDistancePerPulse();
+    double level1Dist = 0;
+    double level2Dist = 10*distance;
+    double level3Dist = 20*distance;
+    double level4Dist = 30*distance;
+    // Get desired distance from buttonz
     if (logitech2.getAButton() == true)
-       return 0.0;
+       return level1Dist;
     else if (logitech2.getBButton() == true)
-      return 10.0;
+      return level2Dist;
     else if (logitech2.getXButton() == true)
-      return 20.0;
+      return level3Dist;
     else if (logitech2.getYButton() == true)
-      return 30.0;
+      return level4Dist;
     else
       return currentLvl;
   }
@@ -69,13 +79,5 @@ public class LiftSystem extends Subsystem {
   public void updateCurrentLvl(double diff) {
     double temp = currentLvl + diff;
     currentLvl = temp;
-  }
-
-  public void setLevel(double diff) {
-    //Convert rotations to distance and tell that to motor
-    double tickDistance = 0;
-    encoder1.setDistancePerPulse(tickDistance);
-    encoder2.setDistancePerPulse(tickDistance);
-    
   }
 }
