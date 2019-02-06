@@ -8,6 +8,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.PWMTalonSRX;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
@@ -19,7 +20,7 @@ public class Pivot extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     private static final XboxController logitech2 = new XboxController(1);
-    private static final PWMTalonSRX motor7 = new PWMTalonSRX(6);
+    private static final PWMTalonSRX pivotMotor = new PWMTalonSRX(RobotMap.pivotMotor);
 
     @Override
   public void initDefaultCommand() {
@@ -27,8 +28,15 @@ public class Pivot extends Subsystem {
     // setDefaultCommand(new MySpecialCommand());
   }
 
-  public void pivotControl() {
-    boolean bumperL = logitech2.getBumper(Hand.kLeft);
-    boolean bumperR = logitech2.getBumper(Hand.kRight);
+  public void pivotDown() {
+
+  }
+
+  public void pivotUp() {
+
+  }
+
+  public void pivotStop() {
+
   }
 }

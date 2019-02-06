@@ -59,10 +59,10 @@ public class LiftSystem extends Subsystem {
     liftmotor.setSpeed(analogLY);
   }
 
-  public double calcDiff(double curr, double des) {
-    double diff = des - curr;
-    return diff;
-  }
+  //public double calcDiff(double curr, double des) {
+  //  double diff = des - curr;
+  //  return diff;
+  //}
 
   // public double desiredPos(double des) {
   //   /* Convert rotations to distance
@@ -88,12 +88,12 @@ public class LiftSystem extends Subsystem {
   //     return currentLvl;
   // }
 
-  public double getCurrentLvl() {
-    return currentLvl;
-  }
-
-  public void updateCurrentLvl(double diff) {
-    double temp = currentLvl + diff;
-    currentLvl = temp;
-  }
+  //public double getCurrentLvl() {
+  //  return currentLvl;
+  //}
+  // 
+  //public void updateCurrentLvl(double diff) {
+  //  double temp = currentLvl + diff;
+  //  currentLvl = temp;
+  //}
 }
