@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
 /**
  * Add your docs here.
  */
-public class CageClaw extends Subsystem {
+public class Claw extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   public static final PWMTalonSRX motor8 = new PWMTalonSRX(7);
