@@ -8,7 +8,8 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.PWMTalonSRX;
+import frc.robot.RobotMap;
+import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 
@@ -18,8 +19,8 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
 public class Claw extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  public static final PWMTalonSRX motor8 = new PWMTalonSRX(7);
-  public static final PWMTalonSRX motor9 = new PWMTalonSRX(8);
+  public static final PWMVictorSPX motor8 = new PWMVictorSPX(RobotMap.clawMotors[0]);
+  public static final PWMVictorSPX clawMotor2 = new PWMVictorSPX(RobotMap.clawMotors[1]);
   public static final XboxController logitech2 = new XboxController(1);
   
   @Override

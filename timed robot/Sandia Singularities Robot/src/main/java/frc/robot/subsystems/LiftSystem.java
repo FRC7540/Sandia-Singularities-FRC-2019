@@ -8,9 +8,10 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
-import edu.wpi.first.wpilibj.PWMTalonSRX;
+import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.PWM;
 import edu.wpi.first.wpilibj.Encoder;
@@ -22,13 +23,10 @@ import edu.wpi.first.wpilibj.Encoder;
 public class LiftSystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  // private static final PWMTalonSRX motor5 = new PWMTalonSRX(4);
-  // private static final PWMTalonSRX motor6 = new PWMTalonSRX(5);
-  // private static final XboxController logitech2 = new XboxController(1);
-  // private static final Encoder encoder1 = new Encoder(0, 0);
-  // private static final Encoder encoder2 = new Encoder(1, 1);
-  // SpeedControllerGroup liftmotors = new SpeedControllerGroup(motor5, motor6);
-  // PWM liftmotor = new PWM(1);
+  private static final PWMVictorSPX liftmotor = new PWMVictorSPX(RobotMap.liftMotor);
+  private static final XboxController logitech2 = new XboxController(RobotMap.controller2);
+  private static final Encoder encoder1 = new Encoder(L, L);
+  private static final Encoder encoder2 = new Encoder(L, L);
   double currentLvl = 0;
 
   public void liftStop() {
@@ -56,9 +54,9 @@ public class LiftSystem extends Subsystem {
   }
 
   public void liftControl() {
-    // creates and uses analog stick for manual elevator positioning
-    // double analogLY = logitech2.getY(Hand.kLeft);
-    // liftmotor.setSpeed(analogLY);
+    //creates and uses analog stick for manual elevator positioning
+    double analogLY = logitech2.getY(Hand.kLeft);
+    liftmotor.setSpeed(analogLY);
   }
 
   public double calcDiff(double curr, double des) {
