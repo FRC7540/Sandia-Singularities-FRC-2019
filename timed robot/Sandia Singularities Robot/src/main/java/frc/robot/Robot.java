@@ -29,14 +29,14 @@ import edu.wpi.first.cameraserver.CameraServer;
  * Please help this robot find its purpose, it doesn't want to spend its life passing butter
  */
 public class Robot extends TimedRobot {
-  public static final IO controllerBinding = new IO();
   private static final String kDefaultAuto = "Default";
   private static final String kCustomAuto = "My Auto";
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
-
+  
   public static final Drive driveSubsystem = new Drive();
   public static final LiftSystem liftSubsystem = new LiftSystem();
+  public static final IO controllerBinding = new IO();
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -48,8 +48,6 @@ public class Robot extends TimedRobot {
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
-    DriveCommand cmd = new DriveCommand();
-    cmd.start();
     CameraServer camera = CameraServer.getInstance();
     camera.startAutomaticCapture("cam0", 0);
   }
@@ -107,6 +105,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
+    Scheduler.getInstance().run();
   }
 
   /**

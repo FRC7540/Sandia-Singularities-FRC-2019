@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-
+import frc.robot.commands.DriveCommand;
 /**
  * Add your docs here.
  * For the dumb people: this makes the robot drive... yay.
@@ -34,6 +34,7 @@ public class Drive extends Subsystem {
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
+    setDefaultCommand(new DriveCommand());
   }
 
   public void driveSystem() {
