@@ -11,10 +11,10 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
-import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.PWM;
 import edu.wpi.first.wpilibj.Encoder;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 /**
  * Add your docs here.
@@ -23,10 +23,10 @@ import edu.wpi.first.wpilibj.Encoder;
 public class LiftSystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  private static final PWMVictorSPX liftmotor = new PWMVictorSPX(RobotMap.liftMotor);
+  private static final WPI_TalonSRX liftmotor = new WPI_TalonSRX(RobotMap.liftMotor);
   private static final XboxController logitech2 = new XboxController(RobotMap.controller2);
-  private static final Encoder encoder1 = new Encoder(L, L);
-  private static final Encoder encoder2 = new Encoder(L, L);
+  //private static final Encoder encoder1 = new Encoder(L, L);
+  //private static final Encoder encoder2 = new Encoder(L, L);
   double currentLvl = 0;
 
   public void liftStop() {
@@ -56,7 +56,7 @@ public class LiftSystem extends Subsystem {
   public void liftControl() {
     //creates and uses analog stick for manual elevator positioning
     double analogLY = logitech2.getY(Hand.kLeft);
-    liftmotor.setSpeed(analogLY);
+    liftmotor.set(analogLY);
   }
 
   //public double calcDiff(double curr, double des) {
