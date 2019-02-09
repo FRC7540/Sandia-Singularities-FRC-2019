@@ -53,7 +53,7 @@ public class LiftSystem extends Subsystem {
   public void liftControl() {
     //creates and uses analog stick for manual elevator positioning
     double analogLY = logitech2.getY(Hand.kLeft);
-    liftmotor.set(analogLY);
+    liftmotor.(analogLY);
   }
 
   //public double calcDiff(double curr, double des) {
