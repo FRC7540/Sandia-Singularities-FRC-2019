@@ -14,7 +14,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.Drive;
 import frc.robot.subsystems.LiftSystem;
 import frc.robot.subsystems.Claw;
+import frc.robot.subsystems.Test;
 import edu.wpi.first.cameraserver.CameraServer;
+//import edu.wpi.first.wpilibj.XboxController;
+//import edu.wpi.first.wpilibj.GenericHID.Hand;
+//import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+//import com.ctre.phoenix.motorcontrol.ControlMode; 
+//import frc.robot.RobotMap;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -36,8 +42,12 @@ public class Robot extends TimedRobot {
   
   public static final Drive driveSubsystem = new Drive();
   public static final LiftSystem liftSubsystem = new LiftSystem();
-  public static final IO controllerBinding = new IO();
   public static final Claw clawSubsystem = new Claw();
+  public static final Test testSubsystem = new Test();
+  public static final IO controllerBinding = new IO();
+
+  //private static final WPI_TalonSRX liftmotor = new WPI_TalonSRX(RobotMap.liftMotor);
+  //private static final XboxController logitech2 = new XboxController(1);
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -107,6 +117,8 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
+    //double analogYL = logitech2.getY(Hand.kLeft);
+    //liftmotor.set(ControlMode.PercentOutput, analogYL);
   }
 
   /**
