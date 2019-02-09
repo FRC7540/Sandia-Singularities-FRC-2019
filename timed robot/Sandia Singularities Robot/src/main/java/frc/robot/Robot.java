@@ -11,9 +11,9 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.DriveCommand;
 import frc.robot.subsystems.Drive;
 import frc.robot.subsystems.LiftSystem;
+import frc.robot.subsystems.Claw;
 import edu.wpi.first.cameraserver.CameraServer;
 
 /**
@@ -37,6 +37,7 @@ public class Robot extends TimedRobot {
   public static final Drive driveSubsystem = new Drive();
   public static final LiftSystem liftSubsystem = new LiftSystem();
   public static final IO controllerBinding = new IO();
+  public static final Claw clawSubsystem = new Claw();
 
   /**
    * This function is run when the robot is first started up and should be used

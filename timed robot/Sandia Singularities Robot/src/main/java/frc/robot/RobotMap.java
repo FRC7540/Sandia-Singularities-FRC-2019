@@ -14,7 +14,8 @@ public class RobotMap {
     public static final int pivotMotor = 4;
     
     //Claw
-    public static final int[] clawMotors = {5, 6};
+    public static final int[] clawPneumatics = {1, 2};
+    public static final int clawCompressor = 3;
 
     //LiftSystem
     public static final int liftMotor = 0;

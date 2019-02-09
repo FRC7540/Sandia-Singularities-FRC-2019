@@ -14,6 +14,8 @@ import frc.robot.commands.LiftSystemLvl1Command;
 import frc.robot.commands.LiftSystemLvl2Command;
 import frc.robot.commands.LiftSystemLvl3Command;
 import frc.robot.commands.LiftSystemLvl4Command;
+import frc.robot.commands.OpenClawCommand;
+import frc.robot.commands.CloseClawCommand;
 
 /**
  * Add your docs here.
@@ -25,6 +27,8 @@ public class IO {
         driverButtonB.whenPressed(new LiftSystemLvl2Command());
 		driverButtonX.whenPressed(new LiftSystemLvl3Command());
 		driverButtonY.whenPressed(new LiftSystemLvl4Command());
+		driverButtonLeftBumper.whenPressed(new OpenClawCommand());
+		driverButtonRightBumper.whenPressed(new CloseClawCommand());
     }
 
     private static final int LEFT_HORIZ_AXIS = 0;
