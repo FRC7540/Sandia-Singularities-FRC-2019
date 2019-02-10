@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.Drive;
 import frc.robot.subsystems.LiftSystem;
 import frc.robot.subsystems.Claw;
-import frc.robot.subsystems.Test;
+import frc.robot.subsystems.Pivot;
 import edu.wpi.first.cameraserver.CameraServer;
 //import edu.wpi.first.wpilibj.XboxController;
 //import edu.wpi.first.wpilibj.GenericHID.Hand;
@@ -43,8 +43,8 @@ public class Robot extends TimedRobot {
   public static final Drive driveSubsystem = new Drive();
   public static final LiftSystem liftSubsystem = new LiftSystem();
   public static final Claw clawSubsystem = new Claw();
-  public static final Test testSubsystem = new Test();
-  public static final IO controllerBinding = new IO();
+  public static final Pivot pivotSubsystem = new Pivot();
+  public static final OI controllerBinding = new OI();
 
   //private static final WPI_TalonSRX liftmotor = new WPI_TalonSRX(RobotMap.liftMotor);
   //private static final XboxController logitech2 = new XboxController(1);

@@ -10,11 +10,11 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class TestCommand extends Command {
-  public TestCommand() {
+public class pivotDownCommand extends Command {
+  public pivotDownCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.testSubsystem);
+    requires(Robot.pivotSubsystem);
   }
 
   // Called just before this Command runs the first time
@@ -25,7 +25,6 @@ public class TestCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.testSubsystem.test();
   }
 
   // Make this return true when this Command no longer needs to run execute()
