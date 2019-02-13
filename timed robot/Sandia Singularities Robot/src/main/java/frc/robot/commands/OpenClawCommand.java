@@ -14,7 +14,7 @@ public class OpenClawCommand extends Command {
   public OpenClawCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.clawSubsystem);
+    //requires(Robot.clawSubsystem);
   }
 
   // Called just before this Command runs the first time
@@ -25,7 +25,7 @@ public class OpenClawCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.clawSubsystem.OpenClaw();
+    //Robot.clawSubsystem.OpenClaw();
   }
 
   // Make this return true when this Command no longer needs to run execute()

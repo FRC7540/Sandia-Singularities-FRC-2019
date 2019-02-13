@@ -42,7 +42,7 @@ public class Robot extends TimedRobot {
   
   public static final Drive driveSubsystem = new Drive();
   public static final LiftSystem liftSubsystem = new LiftSystem();
-  public static final Claw clawSubsystem = new Claw();
+  //public static final Claw clawSubsystem = new Claw();
   public static final Pivot pivotSubsystem = new Pivot();
   public static final OI controllerBinding = new OI();
 
