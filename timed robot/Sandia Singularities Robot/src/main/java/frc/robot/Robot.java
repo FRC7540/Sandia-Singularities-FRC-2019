@@ -8,8 +8,19 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.subsystems.Drive;
+import frc.robot.subsystems.LiftSystem;
+import frc.robot.subsystems.Claw;
+import frc.robot.subsystems.Pivot;
+import edu.wpi.first.cameraserver.CameraServer;
+//import edu.wpi.first.wpilibj.XboxController;
+//import edu.wpi.first.wpilibj.GenericHID.Hand;
+//import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+//import com.ctre.phoenix.motorcontrol.ControlMode; 
+//import frc.robot.RobotMap;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -28,6 +39,15 @@ public class Robot extends TimedRobot {
   private static final String kCustomAuto = "My Auto";
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
+  
+  public static final Drive driveSubsystem = new Drive();
+  public static final LiftSystem liftSubsystem = new LiftSystem();
+  public static final Claw clawSubsystem = new Claw();
+  public static final Pivot pivotSubsystem = new Pivot();
+  public static final OI controllerBinding = new OI();
+
+  //private static final WPI_TalonSRX liftmotor = new WPI_TalonSRX(RobotMap.liftMotor);
+  //private static final XboxController logitech2 = new XboxController(1);
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -35,9 +55,12 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
+    Scheduler.getInstance().run();
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
+    CameraServer camera = CameraServer.getInstance();
+    camera.startAutomaticCapture("cam0", 0);
   }
 
   /**
@@ -93,6 +116,9 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
+    Scheduler.getInstance().run();
+    //double analogYL = logitech2.getY(Hand.kLeft);
+    //liftmotor.set(ControlMode.PercentOutput, analogYL);
   }
 
   /**

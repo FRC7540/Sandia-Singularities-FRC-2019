@@ -8,19 +8,17 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.PWMTalonSRX;
-import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.GenericHID.Hand;
+import frc.robot.RobotMap;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 
 /**
  * Add your docs here.
  */
-public class CageClaw extends Subsystem {
+public class Claw extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  public static final PWMTalonSRX motor8 = new PWMTalonSRX(7);
-  public static final PWMTalonSRX motor9 = new PWMTalonSRX(8);
-  public static final XboxController logitech2 = new XboxController(1);
+  public static final DoubleSolenoid clawPneumatics = new DoubleSolenoid(RobotMap.clawPneumatics[0], RobotMap.clawPneumatics[1]);
   
   @Override
   public void initDefaultCommand() {
@@ -28,7 +26,11 @@ public class CageClaw extends Subsystem {
     // setDefaultCommand(new MySpecialCommand());
   }
 
-  public void ClawControl() {
-    
+  public void OpenClaw() {
+    clawPneumatics.set(Value.kForward);  
+  }
+
+  public void CloseClaw() {
+    clawPneumatics.set(Value.kReverse);
   }
 }

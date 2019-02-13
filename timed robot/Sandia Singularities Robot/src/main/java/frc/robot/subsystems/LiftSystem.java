@@ -7,13 +7,12 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
+import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.RobotMap;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import com.ctre.phoenix.motorcontrol.FeedbackDevice;
-import com.ctre.phoenix.motorcontrol.ControlMode; u
+import com.ctre.phoenix.motorcontrol.ControlMode; 
 
 /**
  * Add your docs here.
@@ -23,8 +22,7 @@ public class LiftSystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   private static final WPI_TalonSRX liftmotor = new WPI_TalonSRX(RobotMap.liftMotor);
-  private static final XboxController logitech2 = new XboxController(RobotMap.controller2);
-  double currentLvl = 0;
+  private static final XboxController logitech2 = new XboxController(1);
 
   public void liftStop() {
     // Stops motor when finished
@@ -48,12 +46,6 @@ public class LiftSystem extends Subsystem {
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-  }
-
-  public void liftControl() {
-    //creates and uses analog stick for manual elevator positioning
-    double analogLY = logitech2.getY(Hand.kLeft);
-    liftmotor.(analogLY);
   }
 
   //public double calcDiff(double curr, double des) {
