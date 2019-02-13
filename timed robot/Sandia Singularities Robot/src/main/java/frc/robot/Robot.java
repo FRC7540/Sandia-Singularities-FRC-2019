@@ -15,6 +15,7 @@ import frc.robot.subsystems.Drive;
 import frc.robot.subsystems.LiftSystem;
 import frc.robot.subsystems.Claw;
 import frc.robot.subsystems.Pivot;
+import frc.robot.subsystems.Thirdeye;
 import edu.wpi.first.cameraserver.CameraServer;
 //import edu.wpi.first.wpilibj.XboxController;
 //import edu.wpi.first.wpilibj.GenericHID.Hand;
@@ -44,6 +45,7 @@ public class Robot extends TimedRobot {
   public static final LiftSystem liftSubsystem = new LiftSystem();
   public static final Claw clawSubsystem = new Claw();
   public static final Pivot pivotSubsystem = new Pivot();
+  public static final Thirdeye thirdeyeSubsystem = new Thirdeye();
   public static final OI controllerBinding = new OI();
 
   //private static final WPI_TalonSRX liftmotor = new WPI_TalonSRX(RobotMap.liftMotor);
