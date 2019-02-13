@@ -43,4 +43,8 @@ public class Claw extends Subsystem {
     // Checks if claw has hit limit switch (closed)
   }
 
+  public void stopClaw() {
+
+  }
+
 }
