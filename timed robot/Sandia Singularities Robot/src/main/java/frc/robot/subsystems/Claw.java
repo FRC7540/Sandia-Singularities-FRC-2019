@@ -18,19 +18,29 @@ import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 public class Claw extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  public static final DoubleSolenoid clawPneumatics = new DoubleSolenoid(RobotMap.clawPneumatics[0], RobotMap.clawPneumatics[1]);
-  
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
   }
 
-  public void OpenClaw() {
-    clawPneumatics.set(Value.kForward);  
+  public void openClaw() {
+    // Move motors open
+
   }
 
-  public void CloseClaw() {
-    clawPneumatics.set(Value.kReverse);
+  public void closeClaw() {
+    // Move motors closed
   }
+
+  public boolean isClawOpen() {
+    return true;
+    // Checks if claw has hit the limit switch (open)
+  }
+
+  public boolean isClawClosed() {
+    return true;
+    // Checks if claw has hit limit switch (closed)
+  }
+
 }
