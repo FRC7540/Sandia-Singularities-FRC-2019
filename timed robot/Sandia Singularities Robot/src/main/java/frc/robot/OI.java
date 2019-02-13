@@ -18,6 +18,7 @@ import frc.robot.commands.LiftSystemLvl4Command;
 import frc.robot.commands.OpenClawCommand;
 import frc.robot.commands.CloseClawCommand;
 import frc.robot.commands.pivotUpCommand;
+import frc.robot.commands.pivotDownCommand;
 
 /**
  * Add your docs here.
