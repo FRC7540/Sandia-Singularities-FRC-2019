@@ -42,16 +42,26 @@ public class Thirdeye extends Subsystem {
   public void RunUltraSonic() {
     double range = thirdeye.getRangeInches();
     double analogLY = logitech1.getY(Hand.kLeft);
+    double analogLX = logitech1.getX(Hand.kRight);
     double convert = range * -1;
     double brakes;
-    //if (button X = true)
+    //if (button X = false)
       //if (range <= 5)
         //brakes = analogLY / convert;
         //double forwardDrive = brakes;
     maindrive.arcadeDrive(brakes, analogLX);
   }
 
-  public void Stop(){
+  public boolean Stop(){
+    return false;
+  }
+
+  public void interrupted(){
+    if (button X = true)
+      double analogLY = logitech1.getY(Hand.kLeft);
+      double analogLX = logitech1.getX(Hand.kLeft);
+      double forwardDrive = analogLY * -1;
+    maindrive.arcadeDrive(forwardDrive, analogLX);
   }
 
   public void driveSystem() {
