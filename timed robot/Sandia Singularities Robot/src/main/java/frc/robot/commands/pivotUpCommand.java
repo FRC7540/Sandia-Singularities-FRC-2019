@@ -25,14 +25,15 @@ public class pivotUpCommand extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    System.out.println("Starting motor");
+    Robot.pivotSubsystem.pivotUp();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
     //this runs infinitely and only needs to run once
-    System.out.println("starting motor");
-    Robot.pivotSubsystem.pivotUp();
+    
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -46,6 +47,7 @@ public class pivotUpCommand extends Command {
     else {
       return false;
     }
+    //return Robot.pivotSubsystem.limitSwitchCheck();
   }
 
   // Called once after isFinished returns true
