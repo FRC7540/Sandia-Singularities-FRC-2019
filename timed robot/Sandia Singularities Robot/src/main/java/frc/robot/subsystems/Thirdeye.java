@@ -41,7 +41,7 @@ public class Thirdeye extends Subsystem {
     double range = thirdeye.getRangeInches();
     double analogLY = logitech1.getY(Hand.kLeft);
     if (range == 5)
-      double forwardDrive = analogLY / -range;
+     double maindrive = analogLY / -range;
       maindrive.arcadeDrive(forwardDrive, analogLX);
   }
 }  
