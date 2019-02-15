@@ -27,13 +27,15 @@ public class Pivot extends Subsystem {
     private static final XboxController logitech2 = new XboxController(1);
     private static final PWMVictorSPX pivotMotor = new PWMVictorSPX(RobotMap.pivotMotor);
     private static final WPI_TalonSRX liftmotor = new WPI_TalonSRX(RobotMap.liftMotor);
-    DigitalInput limitSwitch;
+    DigitalInput limitSwitch1;
+    DigitalInput limitSwitch2;
 
-    @Override
+  @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-    limitSwitch = new DigitalInput(0);
+    limitSwitch1 = new DigitalInput(RobotMap.pivotUp);
+    limitSwitch2 = new DigitalInput(RobotMap.pivotDown);
   }
 
   public void pivotDown() {
@@ -48,10 +50,11 @@ public class Pivot extends Subsystem {
     liftmotor.set(ControlMode.PercentOutput, 0);
   }
 
-  public boolean limitSwitchCheck() {
-    //while (limitSwitch.get()) {
-    //  Timer.delay(10);
-    //}
-    return limitSwitch.get();
+  public boolean limitSwitch1Check() {
+    return limitSwitch1.get();
+  }
+
+  public boolean limitSwitch2Check() {
+    return limitSwitch2.get();
   }
 }

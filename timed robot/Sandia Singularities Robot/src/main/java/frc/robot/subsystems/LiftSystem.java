@@ -7,12 +7,12 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.GenericHID.Hand;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import com.ctre.phoenix.motorcontrol.ControlMode; 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice; 
 
 /**
  * Add your docs here.
@@ -22,67 +22,52 @@ public class LiftSystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   private static final WPI_TalonSRX liftmotor = new WPI_TalonSRX(RobotMap.liftMotor);
-  private static final XboxController logitech2 = new XboxController(1);
-
-  public void liftStop() {
-    // Stops motor when finished
-  }
-
-  public double getCurrentPosition() {
-    // get the saved current position
-    return 0;
-  }
-
-  public void setCurrentPosition(double desiredPosition) {
-    // make sure that position is valid
-    // save it
-  }
-
-  public void moveTowardsPosition() {
-    // set the motor to move towards the current position
-  }
-
+  private static final double level1 = RobotMap.lvl1;
+  private static final double level2 = RobotMap.lvl2;
+  private static final double level3 = RobotMap.lvl3;
+  private static final double level4 = RobotMap.lvl4;
+  DigitalInput limitSwitch1;
+  DigitalInput limitSwitch2;
+  
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
+    limitSwitch1 = new DigitalInput(RobotMap.liftBottom);
+    limitSwitch2 = new DigitalInput(RobotMap.liftTop);
   }
 
-  //public double calcDiff(double curr, double des) {
-  //  double diff = des - curr;
-  //  return diff;
-  //}
+  public void liftInit() {
+    liftmotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative);
+    liftmotor.configFactoryDefault();
+  }
 
-  // public double desiredPos(double des) {
-  //   /* Convert rotations to distance
-  //   double tickDistance = 0;
-  //   encoder1.setDistancePerPulse(tickDistance);
-  //   encoder2.setDistancePerPulse(tickDistance);
-  //   double distance = encoder1.getDistancePerPulse();
-  //   double level1Dist = 0;
-  //   double level2Dist = 10*distance;
-  //   double level3Dist = 20*distance;
-  //   double level4Dist = 30*distance;
-  //   */
-  //   // Get desired distance from buttonz
-  //   if (logitech2.getAButton() == true)
-  //      return 0;
-  //   else if (logitech2.getBButton() == true)
-  //     return 10;
-  //   else if (logitech2.getXButton() == true)
-  //     return 20;
-  //   else if (logitech2.getYButton() == true)
-  //     return 30;
-  //   else
-  //     return currentLvl;
-  // }
+  public void liftStop() {
+    // Stops motor when finished
+    liftmotor.set(ControlMode.PercentOutput, 0);
+  }
 
-  //public double getCurrentLvl() {
-  //  return currentLvl;
-  //}
-  // 
-  //public void updateCurrentLvl(double diff) {
-  //  double temp = currentLvl + diff;
-  //  currentLvl = temp;
-  //}
+  public void moveTowardsPosition1() {
+    liftmotor.set(ControlMode.Position, level1);
+  }
+
+  public void moveTowardsPosition2() {
+    liftmotor.set(ControlMode.Position, level2);
+  }
+
+  public void moveTowardsPosition3() {
+    liftmotor.set(ControlMode.Position, level3);
+  }
+
+  public void moveTowardsPosition4() {
+    liftmotor.set(ControlMode.Position, level4);
+  }
+
+  public boolean limitSwitch1Check() {
+    return limitSwitch1.get();
+  }
+
+  public boolean limitSwitch2Check() {
+    return limitSwitch2.get();
+  }
 }

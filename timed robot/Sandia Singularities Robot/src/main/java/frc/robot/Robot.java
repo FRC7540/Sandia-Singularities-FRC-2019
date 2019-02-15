@@ -42,12 +42,9 @@ public class Robot extends TimedRobot {
   
   public static final Drive driveSubsystem = new Drive();
   public static final LiftSystem liftSubsystem = new LiftSystem();
-  //public static final Claw clawSubsystem = new Claw();
+  public static final Claw clawSubsystem = new Claw();
   public static final Pivot pivotSubsystem = new Pivot();
   public static final OI controllerBinding = new OI();
-
-  //private static final WPI_TalonSRX liftmotor = new WPI_TalonSRX(RobotMap.liftMotor);
-  //private static final XboxController logitech2 = new XboxController(1);
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -117,8 +114,6 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
-    //double analogYL = logitech2.getY(Hand.kLeft);
-    //liftmotor.set(ControlMode.PercentOutput, analogYL);
   }
 
   /**

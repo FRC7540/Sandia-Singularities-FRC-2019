@@ -9,8 +9,6 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 
 /**
  * Add your docs here.
@@ -18,7 +16,6 @@ import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 public class Claw extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  //public static final DoubleSolenoid clawPneumatics = new DoubleSolenoid(RobotMap.clawPneumatics[0], RobotMap.clawPneumatics[1]);
   
   @Override
   public void initDefaultCommand() {
@@ -26,11 +23,9 @@ public class Claw extends Subsystem {
     // setDefaultCommand(new MySpecialCommand());
   }
 
-  public void OpenClaw() {
-    //clawPneumatics.set(Value.kForward);  
+  public void OpenClaw() {  
   }
 
   public void CloseClaw() {
-    //clawPneumatics.set(Value.kReverse);
   }
 }

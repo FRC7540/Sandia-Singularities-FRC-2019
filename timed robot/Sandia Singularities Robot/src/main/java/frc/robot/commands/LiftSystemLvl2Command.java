@@ -12,6 +12,7 @@ import frc.robot.Robot;
 
 public class LiftSystemLvl2Command extends Command {
   private static final double level2 = 10;
+  public static final boolean limitSwitchClosed = false;
 
   public LiftSystemLvl2Command() {
     requires(Robot.liftSubsystem);
@@ -22,21 +23,23 @@ public class LiftSystemLvl2Command extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.liftSubsystem.setCurrentPosition(level2);
-
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.liftSubsystem.moveTowardsPosition();
+    Robot.liftSubsystem.moveTowardsPosition2();
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    double position2 = Robot.liftSubsystem.getCurrentPosition();
-    if (level2 < position2+0.1 && level2 > position2-0.1)
+    double position2 = 10;
+    boolean closedSwitch1 = Robot.liftSubsystem.limitSwitch1Check();
+    boolean closedSwitch2 = Robot.liftSubsystem.limitSwitch2Check();
+    if ( (level2 < position2+0.1 && level2 > position2-0.1)
+    || (limitSwitchClosed == closedSwitch1)
+    || (limitSwitchClosed == closedSwitch2) )
       return true;
     else
       return false;

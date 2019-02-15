@@ -39,7 +39,7 @@ public class pivotUpCommand extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    boolean closedSwitch = Robot.pivotSubsystem.limitSwitchCheck();
+    boolean closedSwitch = Robot.pivotSubsystem.limitSwitch1Check();
     if (limitSwitchClosed == closedSwitch) {
       System.out.println("detected limit switch");
       return true;
