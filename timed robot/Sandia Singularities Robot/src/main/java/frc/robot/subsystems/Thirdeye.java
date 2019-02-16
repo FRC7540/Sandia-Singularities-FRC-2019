@@ -60,8 +60,8 @@ public class Thirdeye extends Subsystem {
     double range = thirdeye.getRangeInches();
     double analogLY = logitech1.getY(Hand.kLeft);
     double analogLX = logitech1.getX(Hand.kLeft);
-    double speed;
-    double invert;
+    double speed = analogLY;
+    double invert = 0;
 
     //Converting range to usable
     if (range == 5)
@@ -86,7 +86,7 @@ public class Thirdeye extends Subsystem {
     speed = analogLY / invert;
     maindrive.arcadeDrive(speed, analogLX);
   }
-  
+
   public void driveSystem() {
     double analogLY = logitech1.getY(Hand.kLeft);
     double analogLX = logitech1.getX(Hand.kLeft);
