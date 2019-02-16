@@ -17,6 +17,7 @@ import frc.robot.commands.LiftSystemLvl4Command;
 import frc.robot.commands.OpenClawCommand;
 import frc.robot.commands.CloseClawCommand;
 import frc.robot.commands.pivotUpCommand;
+import frc.robot.commands.pivotDownCommand;
 
 /**
  * Add your docs here.
@@ -24,13 +25,14 @@ import frc.robot.commands.pivotUpCommand;
 public class OI {
 
     public OI () {
-        driverButtonA.whenPressed(new LiftSystemLvl1Command());
-        driverButtonB.whenPressed(new LiftSystemLvl2Command());
-		driverButtonX.whenPressed(new LiftSystemLvl3Command());
-		driverButtonY.whenPressed(new LiftSystemLvl4Command());
-		driverButtonLeftBumper.whenPressed(new OpenClawCommand());
-		driverButtonRightBumper.whenPressed(new CloseClawCommand());
-		driverButtonStart.whenPressed(new pivotUpCommand());
+        operatorButtonA.whenPressed(new LiftSystemLvl1Command());
+        operatorButtonB.whenPressed(new LiftSystemLvl2Command());
+		operatorButtonX.whenPressed(new LiftSystemLvl3Command());
+		operatorButtonY.whenPressed(new LiftSystemLvl4Command());
+		operatorButtonLeftBumper.whenPressed(new OpenClawCommand());
+		operatorButtonRightBumper.whenPressed(new CloseClawCommand());
+		operatorButtonStart.whenPressed(new pivotDownCommand());
+		operatorButtonBack.whenPressed(new pivotUpCommand());
     }
 
     private static final int LEFT_HORIZ_AXIS = 0;
@@ -54,5 +56,18 @@ public class OI {
 	private Button driverButtonBack = new JoystickButton(driverController, 7);
 	private Button driverButtonStart = new JoystickButton(driverController, 8);
 	private Button driverButtonLeftAxisPress = new JoystickButton(driverController, 9);
-    private Button driverButtonRightAxisPress = new JoystickButton(driverController, 10);
+	private Button driverButtonRightAxisPress = new JoystickButton(driverController, 10);
+	
+	// Operator controller setup
+	private Joystick operatorController = new Joystick(0);
+	private Button operatorButtonA = new JoystickButton(operatorController, 1);
+	private Button operatorButtonB = new JoystickButton(operatorController, 2);
+	private Button operatorButtonX = new JoystickButton(operatorController, 3);
+	private Button operatorButtonY = new JoystickButton(operatorController, 4);
+	private Button operatorButtonLeftBumper = new JoystickButton(operatorController, 5);
+	private Button operatorButtonRightBumper = new JoystickButton(operatorController, 6);
+	private Button operatorButtonBack = new JoystickButton(operatorController, 7);
+	private Button operatorButtonStart = new JoystickButton(operatorController, 8);
+	private Button operatorButtonLeftAxisPress = new JoystickButton(operatorController, 9);
+	private Button operatorButtonRightAxisPress = new JoystickButton(operatorController, 10);
 }
