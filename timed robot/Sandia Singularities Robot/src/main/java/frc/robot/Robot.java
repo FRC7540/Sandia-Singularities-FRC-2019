@@ -11,6 +11,10 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice; 
+
 import frc.robot.subsystems.Drive;
 import frc.robot.subsystems.LiftSystem;
 import frc.robot.subsystems.LiftSystemManual;
@@ -36,6 +40,8 @@ public class Robot extends TimedRobot {
   private static final String kCustomAuto = "My Auto";
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
+
+  private static final WPI_TalonSRX liftmotor = new WPI_TalonSRX(RobotMap.liftMotor);
   
   public static final Drive driveSubsystem = new Drive();
   public static final LiftSystem liftSubsystem = new LiftSystem();
@@ -120,5 +126,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testPeriodic() {
+    liftmotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative);
+    double encoderValues = liftmotor.getSelectedSensorPosition();
+    System.out.println(encoderValues);
   }
 }
