@@ -14,7 +14,7 @@ public class PivotDownCommand extends Command {
   public static final boolean limitSwitchClosed = false;
 
   public PivotDownCommand() {
-    // Use requires() here to declare subsystem dependencies
+    // Use requires() here to declare subsystem dependencies 
     // eg. requires(chassis);
     requires(Robot.pivotSubsystem);
   }

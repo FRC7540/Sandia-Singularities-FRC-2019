@@ -12,7 +12,7 @@ import frc.robot.Robot;
 
 public class ClawManualCommand extends Command {
   public ClawManualCommand() {
-    // Use requires() here to declare subsystem dependencies 
+    // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.clawManualSubsystem);
   }

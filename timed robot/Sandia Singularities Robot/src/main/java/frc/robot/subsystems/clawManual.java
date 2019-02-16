@@ -19,7 +19,7 @@ import frc.robot.commands.ClawManualCommand;
  * Add your docs here.
  */
 public class ClawManual extends Subsystem {
-  // Put methods for controlling this subsystem
+  // Put methods for controlling this subsystem 
   // here. Call these from Commands.
   public static final XboxController logitech2 = new XboxController(RobotMap.controller2);
   public static final WPI_VictorSPX clawMotor = new WPI_VictorSPX(RobotMap.clawMotor);

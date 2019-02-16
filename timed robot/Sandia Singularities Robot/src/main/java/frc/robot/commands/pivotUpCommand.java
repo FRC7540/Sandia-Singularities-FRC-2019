@@ -17,7 +17,7 @@ public class PivotUpCommand extends Command {
   public static final XboxController logitech1 = new XboxController(RobotMap.controller2);
 
   public PivotUpCommand() {
-    // Use requires() here to declare subsystem dependencies
+    // Use requires() here to declare subsystem dependencies 
     // eg. requires(chassis);
     requires(Robot.pivotSubsystem);
   }
