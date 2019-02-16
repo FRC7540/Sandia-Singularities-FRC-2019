@@ -39,17 +39,52 @@ public class Thirdeye extends Subsystem {
     thirdeye.setAutomaticMode(true);
   }
 
-  public void ultrasonicSample() {
+  //public void ultrasonicSample() {
+    //double range = thirdeye.getRangeInches();
+    //double analogLY = logitech1.getY(Hand.kLeft);
+    //double analogLX = logitech1.getX(Hand.kLeft);
+    //double opOne = 1 / range;
+    //double brakes;
+    //double opTwo;
+
+    //opTwo = analogLY - opOne;
+    //brakes = opTwo + .1;
+    
+    //if (range <= 5)
+      //brakes = opTwo + .1;
+      //double forwardDrive = brakes;
+    //maindrive.arcadeDrive(forwardDrive, analogLX);
+  //}
+
+  public void ultrasonicSmaple(){
     double range = thirdeye.getRangeInches();
     double analogLY = logitech1.getY(Hand.kLeft);
     double analogLX = logitech1.getX(Hand.kLeft);
-    double middleOp = 1 / range;
-    double brakes;
-    if (range <= 5)
-      middleOp = analogLY - middleOp;
-      brakes = middleOp + .1;
-      double forwardDrive = brakes;
-    maindrive.arcadeDrive(forwardDrive, analogLX);
+    double speed = analogLY;
+    double invert = 0;
+
+    //Converting range to usable
+    if (range == 5)
+      invert = 1;
+
+    if (range == 4)
+      invert = 2;
+
+    if (range == 3)
+      invert = 3;
+      
+    if (range == 2)
+      invert = 4;
+
+    if (range == 1)
+      invert = 5;
+
+    if (range == 0)
+      invert = 6;
+
+    //doing the actual speed conversion
+    speed = analogLY / invert;
+    maindrive.arcadeDrive(speed, analogLX);
   }
 
   public void driveSystem() {
