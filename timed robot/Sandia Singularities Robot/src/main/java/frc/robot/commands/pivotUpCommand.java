@@ -40,7 +40,6 @@ public class pivotUpCommand extends Command {
   protected boolean isFinished() {
     boolean closedSwitch = Robot.pivotSubsystem.limitSwitchCheck();
     if (limitSwitchClosed == closedSwitch) {
-      System.out.println("detected limit switch");
       return true;
     }
     else {
