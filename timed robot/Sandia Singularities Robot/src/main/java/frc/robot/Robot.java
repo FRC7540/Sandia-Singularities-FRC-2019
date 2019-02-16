@@ -16,8 +16,7 @@ import frc.robot.subsystems.LiftSystem;
 import frc.robot.subsystems.LiftSystemManual;
 import frc.robot.subsystems.Claw;
 import frc.robot.subsystems.Pivot;
-import frc.robot.subsystems.Thirdeye;
-import frc.robot.subsystems.ThirdeyeOveride;
+import frc.robot.subsystems.clawManual;
 import edu.wpi.first.cameraserver.CameraServer;
 
 /**
@@ -42,9 +41,8 @@ public class Robot extends TimedRobot {
   public static final LiftSystem liftSubsystem = new LiftSystem();
   public static final Claw clawSubsystem = new Claw();
   public static final Pivot pivotSubsystem = new Pivot();
-  public static final ThirdeyeOveride overideSubsystem = new ThirdeyeOveride();
-  public static final Thirdeye thirdeyeSubsystem = new Thirdeye();
   public static final LiftSystemManual liftSystemManualSubsystem = new LiftSystemManual();
+  public static final clawManual clawManualSubsystem = new clawManual();
   public static final OI controllerBinding = new OI();
 
   /**

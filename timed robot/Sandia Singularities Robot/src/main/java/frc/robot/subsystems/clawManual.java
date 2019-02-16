@@ -7,19 +7,32 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.commands.ThirdeyeOverideCommand;
+import frc.robot.RobotMap;
+import frc.robot.commands.clawManualCommand;
 
 /**
  * Add your docs here.
  */
-public class ThirdeyeOveride extends Subsystem {
+public class clawManual extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
+  public static final XboxController logitech2 = new XboxController(RobotMap.controller2);
+  public static final WPI_VictorSPX clawMotor = new WPI_VictorSPX(RobotMap.clawMotor);
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
+    setDefaultCommand(new clawManualCommand());
+  }
+
+  public void manualMovement() {
+    double analogYL = logitech2.getY(Hand.kLeft);
+    clawMotor.set(ControlMode.PercentOutput, analogYL);
   }
 }

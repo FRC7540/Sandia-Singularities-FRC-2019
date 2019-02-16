@@ -15,7 +15,6 @@ import frc.robot.commands.LiftSystemLvl2Command;
 import frc.robot.commands.LiftSystemLvl3Command;
 import frc.robot.commands.LiftSystemLvl4Command;
 import frc.robot.commands.OpenClawCommand;
-import frc.robot.commands.ThirdeyeOverideCommand;
 import frc.robot.commands.CloseClawCommand;
 import frc.robot.commands.pivotUpCommand;
 import frc.robot.commands.pivotDownCommand;
@@ -34,7 +33,6 @@ public class OI {
 		operatorButtonRightBumper.whenPressed(new CloseClawCommand());
 		operatorButtonStart.whenPressed(new pivotDownCommand());
 		operatorButtonBack.whenPressed(new pivotUpCommand());
-		driverButtonLeftBumper.whenPressed(new ThirdeyeOverideCommand());
     }
 
     private static final int LEFT_HORIZ_AXIS = 0;
