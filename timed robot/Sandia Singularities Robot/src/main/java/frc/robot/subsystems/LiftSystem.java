@@ -38,8 +38,8 @@ public class LiftSystem extends Subsystem {
   }
 
   public void liftInit() {
-    liftmotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative);
     liftmotor.configFactoryDefault();
+    liftmotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute);
   }
 
   public void liftStop() {

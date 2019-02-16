@@ -26,6 +26,7 @@ public class LiftSystemManualCommand extends Command {
   @Override
   protected void execute() {
     Robot.liftSystemManualSubsystem.manualPosition();
+    Robot.liftSystemManualSubsystem.stopManual();
   }
 
   // Make this return true when this Command no longer needs to run execute()

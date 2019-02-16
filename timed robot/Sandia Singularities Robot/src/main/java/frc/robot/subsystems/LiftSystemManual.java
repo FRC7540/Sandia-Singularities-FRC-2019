@@ -35,4 +35,10 @@ public class LiftSystemManual extends Subsystem {
     double analogRY = logitech1.getY(Hand.kRight);
     liftmotor.set(ControlMode.PercentOutput, analogRY);
   }
+
+  public void stopManual() {
+    boolean leftBumper = logitech1.getBumper(Hand.kLeft);
+    if (leftBumper == true)
+      liftmotor.stopMotor();
+  }
 }

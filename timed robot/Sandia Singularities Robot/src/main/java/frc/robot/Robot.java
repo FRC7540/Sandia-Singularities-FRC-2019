@@ -14,6 +14,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice; 
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
+import com.ctre.phoenix.motorcontrol.*;
 
 import frc.robot.subsystems.Drive;
 import frc.robot.subsystems.LiftSystem;
@@ -42,6 +45,7 @@ public class Robot extends TimedRobot {
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
 
   private static final WPI_TalonSRX liftmotor = new WPI_TalonSRX(RobotMap.liftMotor);
+  private static final XboxController logitech1 = new XboxController(RobotMap.controller1);
   
   public static final Drive driveSubsystem = new Drive();
   public static final LiftSystem liftSubsystem = new LiftSystem();
@@ -126,8 +130,17 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testPeriodic() {
-    liftmotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative);
+    liftmotor.configFactoryDefault();
+    liftmotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute);
+    double analogYR = logitech1.getY(Hand.kRight);
+    liftmotor.set(ControlMode.PercentOutput, analogYR);
+    
     double encoderValues = liftmotor.getSelectedSensorPosition();
+    System.out.println("printingEncoderValues");
     System.out.println(encoderValues);
+
+    boolean buttonA = logitech1.getAButton();
+    if (buttonA == true)
+      liftmotor.stopMotor();
   }
 }
