@@ -12,11 +12,11 @@ import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-public class PivotUpCommand extends Command {
+public class pivotUpCommand extends Command {
   public static final boolean limitSwitchClosed = false;
   public static final XboxController logitech1 = new XboxController(RobotMap.controller2);
 
-  public PivotUpCommand() {
+  public pivotUpCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.pivotSubsystem);
