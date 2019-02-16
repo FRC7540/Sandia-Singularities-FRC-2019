@@ -10,10 +10,10 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class pivotDownCommand extends Command {
+public class PivotDownCommand extends Command {
   public static final boolean limitSwitchClosed = false;
 
-  public pivotDownCommand() {
+  public PivotDownCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.pivotSubsystem);

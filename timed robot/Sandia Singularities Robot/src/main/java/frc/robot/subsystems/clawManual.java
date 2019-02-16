@@ -13,12 +13,12 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
-import frc.robot.commands.clawManualCommand;
+import frc.robot.commands.ClawManualCommand;
 
 /**
  * Add your docs here.
  */
-public class clawManual extends Subsystem {
+public class ClawManual extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   public static final XboxController logitech2 = new XboxController(RobotMap.controller2);
@@ -28,7 +28,7 @@ public class clawManual extends Subsystem {
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-    setDefaultCommand(new clawManualCommand());
+    setDefaultCommand(new ClawManualCommand());
   }
 
   public void manualMovement() {
