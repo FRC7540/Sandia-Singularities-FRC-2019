@@ -44,7 +44,6 @@ public class pivotUpCommand extends Command {
     else {
       return false;
     }
-    //return Robot.pivotSubsystem.limitSwitchCheck();
   }
 
   // Called once after isFinished returns true
