@@ -26,45 +26,11 @@ public class Thirdeye extends Subsystem {
      thirdeye.setAutomaticMode(true);
    }
 
-   public void ultrasonicSample() {
-     //double range = thirdeye.getRangeInches();
-     //double opOne = 1 / range;
-     //double brakes;
-     //double opTwo;
+   public void thirdeyeValue() {
 
-     //opTwo = analogLY - opOne;
-     //brakes = opTwo + .1;
-    
-     //if (range <= 5)
-       //brakes = opTwo + .1;
-       //double forwardDrive = brakes;
-     //maindrive.arcadeDrive(forwardDrive, analogLX);
    }
 
-   public void ultrasonicSmaple(){
-     double range = thirdeye.getRangeInches();
-     double invert = 0;
-
-     //Converting range to usable
-     if (range == 5)
-       invert = 1;
-
-     if (range == 4)
-       invert = 2;
-
-     if (range == 3)
-       invert = 3;
-      
-     if (range == 2)
-       invert = 4;
-
-     if (range == 1)
-       invert = 5;
-
-     if (range == 0)
-       invert = 6;
-
-     //doing the actual speed conversion
-     //speed = analogLY / invert;
+   public void thirdeyeConversion() {
+     
    }
  }
