@@ -15,12 +15,9 @@ import frc.robot.subsystems.Drive;
 import frc.robot.subsystems.LiftSystem;
 import frc.robot.subsystems.Claw;
 import frc.robot.subsystems.Pivot;
+import frc.robot.subsystems.Thirdeye;
+import frc.robot.subsystems.ThirdeyeOveride;
 import edu.wpi.first.cameraserver.CameraServer;
-//import edu.wpi.first.wpilibj.XboxController;
-//import edu.wpi.first.wpilibj.GenericHID.Hand;
-//import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-//import com.ctre.phoenix.motorcontrol.ControlMode; 
-//import frc.robot.RobotMap;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -44,6 +41,8 @@ public class Robot extends TimedRobot {
   public static final LiftSystem liftSubsystem = new LiftSystem();
   public static final Claw clawSubsystem = new Claw();
   public static final Pivot pivotSubsystem = new Pivot();
+  public static final ThirdeyeOveride overideSubsystem = new ThirdeyeOveride();
+  public static final Thirdeye thirdeyeSubsystem = new Thirdeye();
   public static final OI controllerBinding = new OI();
 
   /**
