@@ -11,7 +11,7 @@ public class RobotMap {
     public static final int controller2 = 1;
 
     //pivot
-    public static final int pivotMotor = 4;
+    public static final int pivotMotor = 2;
     
     //Claw
 

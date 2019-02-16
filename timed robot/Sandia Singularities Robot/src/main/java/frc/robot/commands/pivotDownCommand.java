@@ -11,6 +11,8 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class pivotDownCommand extends Command {
+  public static final boolean limitSwitchClosed = false;
+
   public pivotDownCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -20,6 +22,7 @@ public class pivotDownCommand extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    Robot.pivotSubsystem.pivotDown();
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -30,17 +33,25 @@ public class pivotDownCommand extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    boolean closedSwitch = Robot.pivotSubsystem.limitSwitch1Check();
+    if (limitSwitchClosed == closedSwitch) {
+      return true;
+    }
+    else {
+      return false;
+    }
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.pivotSubsystem.pivotStop();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    end();
   }
 }

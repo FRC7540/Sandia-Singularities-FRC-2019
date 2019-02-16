@@ -25,7 +25,6 @@ public class pivotUpCommand extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    System.out.println("Starting motor");
     Robot.pivotSubsystem.pivotUp();
   }
 
@@ -33,7 +32,6 @@ public class pivotUpCommand extends Command {
   @Override
   protected void execute() {
     //this runs infinitely and only needs to run once
-    
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -41,7 +39,6 @@ public class pivotUpCommand extends Command {
   protected boolean isFinished() {
     boolean closedSwitch = Robot.pivotSubsystem.limitSwitch1Check();
     if (limitSwitchClosed == closedSwitch) {
-      System.out.println("detected limit switch");
       return true;
     }
     else {
@@ -53,7 +50,6 @@ public class pivotUpCommand extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    System.out.println("Stopping motor");
     Robot.pivotSubsystem.pivotStop();
   }
 
