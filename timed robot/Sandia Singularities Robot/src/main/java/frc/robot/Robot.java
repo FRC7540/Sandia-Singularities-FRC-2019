@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.Drive;
 import frc.robot.subsystems.LiftSystem;
+import frc.robot.subsystems.LiftSystemManual;
 import frc.robot.subsystems.Claw;
 import frc.robot.subsystems.Pivot;
 import frc.robot.subsystems.Thirdeye;
@@ -43,6 +44,7 @@ public class Robot extends TimedRobot {
   public static final Pivot pivotSubsystem = new Pivot();
   public static final ThirdeyeOveride overideSubsystem = new ThirdeyeOveride();
   public static final Thirdeye thirdeyeSubsystem = new Thirdeye();
+  public static final LiftSystemManual liftSystemManualSubsystem = new LiftSystemManual();
   public static final OI controllerBinding = new OI();
 
   /**

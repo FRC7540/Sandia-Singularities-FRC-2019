@@ -26,15 +26,15 @@ import frc.robot.commands.pivotDownCommand;
 public class OI {
 
     public OI () {
-        operatorButtonA.whenPressed(new LiftSystemLvl1Command());
-        operatorButtonB.whenPressed(new LiftSystemLvl2Command());
-		operatorButtonX.whenPressed(new LiftSystemLvl3Command());
-		operatorButtonY.whenPressed(new LiftSystemLvl4Command());
+        driverButtonA.whenPressed(new LiftSystemLvl1Command());
+        driverButtonB.whenPressed(new LiftSystemLvl2Command());
+		driverButtonX.whenPressed(new LiftSystemLvl3Command());
+		driverButtonY.whenPressed(new LiftSystemLvl4Command());
 		operatorButtonLeftBumper.whenPressed(new OpenClawCommand());
 		operatorButtonRightBumper.whenPressed(new CloseClawCommand());
 		operatorButtonStart.whenPressed(new pivotDownCommand());
 		operatorButtonBack.whenPressed(new pivotUpCommand());
-		driverButtonA.whenPressed(new ThirdeyeOverideCommand());
+		driverButtonLeftBumper.whenPressed(new ThirdeyeOverideCommand());
     }
 
     private static final int LEFT_HORIZ_AXIS = 0;
