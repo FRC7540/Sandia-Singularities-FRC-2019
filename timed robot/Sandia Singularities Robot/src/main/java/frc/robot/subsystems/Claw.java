@@ -16,16 +16,33 @@ import frc.robot.RobotMap;
 public class Claw extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
   }
 
-  public void OpenClaw() {  
+  public void openClaw() {
+    // Move motors open
+
   }
 
-  public void CloseClaw() {
+  public void closeClaw() {
+    // Move motors closed
   }
+
+  public boolean isClawOpen() {
+    return true;
+    // Checks if claw has hit the limit switch (open)
+  }
+
+  public boolean isClawClosed() {
+    return true;
+    // Checks if claw has hit limit switch (closed)
+  }
+
+  public void stopClaw() {
+
+  }
+
 }
