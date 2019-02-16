@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class OpenClawCommand extends Command {
+  
   public OpenClawCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -20,28 +21,31 @@ public class OpenClawCommand extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    Robot.clawSubsystem.openClaw();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.clawSubsystem.openClaw();
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
-  protected boolean isFinished() {;
-      return Robot.clawSubsystem.isClawOpen();
+  protected boolean isFinished() {
+    return Robot.clawSubsystem.isClawMaxOpen();
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.clawSubsystem.stopClaw();
+
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    end();
   }
 }
