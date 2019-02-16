@@ -11,10 +11,10 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class PivotDownCommand extends Command {
-  public static final boolean limitSwitchClosed = false;
+public static final boolean limitSwitchClosed = false;
 
   public PivotDownCommand() {
-    // Use requires() here to declare subsystem dependencies 
+    // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.pivotSubsystem);
   }
@@ -34,12 +34,10 @@ public class PivotDownCommand extends Command {
   @Override
   protected boolean isFinished() {
     boolean closedSwitch = Robot.pivotSubsystem.limitSwitch1Check();
-    if (limitSwitchClosed == closedSwitch) {
+    if (limitSwitchClosed == closedSwitch)
       return true;
-    }
-    else {
+    else
       return false;
-    }
   }
 
   // Called once after isFinished returns true
