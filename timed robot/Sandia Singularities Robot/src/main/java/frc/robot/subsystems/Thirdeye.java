@@ -15,7 +15,6 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.RobotMap;
-import frc.robot.commands.DriveCommand;
 
 //adding motors and the ultrasonic sensor
 public class Thirdeye extends Subsystem {
