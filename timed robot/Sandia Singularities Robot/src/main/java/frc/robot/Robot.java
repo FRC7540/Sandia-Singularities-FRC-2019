@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
@@ -46,7 +47,9 @@ public class Robot extends TimedRobot {
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
 
   private static final WPI_TalonSRX liftmotor = new WPI_TalonSRX(RobotMap.liftMotor);
+  private static final WPI_VictorSPX pivotmotor = new WPI_VictorSPX(RobotMap.pivotMotor);
   private static final XboxController logitech1 = new XboxController(RobotMap.controller1);
+  private static final XboxController logitech2 = new XboxController(RobotMap.controller2);
 
   public static final Drive driveSubsystem = new Drive();
   public static final LiftSystem liftSubsystem = new LiftSystem();
@@ -196,6 +199,11 @@ public class Robot extends TimedRobot {
     double analogYR = logitech1.getY(Hand.kRight);
     double slowMotor = analogYR * .1;
     liftmotor.set(ControlMode.PercentOutput, slowMotor);
+
+    //manual control for pivot
+    double analogYR2 = logitech2.getY(Hand.kRight);
+    double slowMotor2 = analogYR2 *.1;
+    pivotmotor.set(ControlMode.PercentOutput, slowMotor2);
 
     // prints values of the encoder
     double encoderValues = liftmotor.getSelectedSensorPosition();
