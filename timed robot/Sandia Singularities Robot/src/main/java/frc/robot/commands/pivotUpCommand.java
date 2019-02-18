@@ -9,6 +9,9 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.XboxController;
+
+import java.util.concurrent.TimeUnit;
+
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
@@ -25,25 +28,24 @@ public class pivotUpCommand extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.pivotSubsystem.pivotUp();
+    
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    Robot.pivotSubsystem.pivotUp();
     //this runs infinitely and only needs to run once
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    boolean closedSwitch = Robot.pivotSubsystem.limitSwitch1Check();
-    if (limitSwitchClosed == closedSwitch) {
-      return true;
-    }
-    else {
+    try {
+      TimeUnit.SECONDS.sleep(1);
+      } catch (InterruptedException e) { 
+      }
       return false;
-    }
   }
 
   // Called once after isFinished returns true

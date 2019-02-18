@@ -31,12 +31,12 @@ public class Claw extends Subsystem {
 
   public void openClaw() {
     // Move motors open
-    clawMotor.set(ControlMode.PercentOutput, 1);
+    clawMotor.set(ControlMode.PercentOutput, 0.001);
   }
 
   public void closeClaw() {
     // Move motors closed
-    clawMotor.set(ControlMode.PercentOutput, -1);
+    clawMotor.set(ControlMode.PercentOutput, -0.001);
   }
 
   public void stopClaw() {
