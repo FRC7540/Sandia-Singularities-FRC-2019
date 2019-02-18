@@ -43,8 +43,7 @@ public class pivotUpCommand extends Command {
   protected boolean isFinished() {
     try {
       TimeUnit.SECONDS.sleep(1);
-      } catch (InterruptedException e) { 
-      }
+      } catch (InterruptedException e) {}
       return false;
   }
 

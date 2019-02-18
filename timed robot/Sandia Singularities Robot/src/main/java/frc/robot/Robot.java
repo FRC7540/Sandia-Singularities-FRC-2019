@@ -19,7 +19,7 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
 import com.ctre.phoenix.motorcontrol.*;
 
 import frc.robot.subsystems.Drive;
-import frc.robot.subsystems.LiftSystem;
+//import frc.robot.subsystems.LiftSystem;
 import frc.robot.subsystems.LiftSystemManual;
 import frc.robot.subsystems.Claw;
 import frc.robot.subsystems.Pivot;
@@ -48,7 +48,7 @@ public class Robot extends TimedRobot {
   private static final XboxController logitech1 = new XboxController(RobotMap.controller1);
   
   public static final Drive driveSubsystem = new Drive();
-  public static final LiftSystem liftSubsystem = new LiftSystem();
+  //public static final LiftSystem liftSubsystem = new LiftSystem();
   public static final Claw clawSubsystem = new Claw();
   public static final Pivot pivotSubsystem = new Pivot();
   public static final LiftSystemManual liftSystemManualSubsystem = new LiftSystemManual();
@@ -143,7 +143,7 @@ public class Robot extends TimedRobot {
     double motorSpeed = liftmotor.get();
     System.out.println("printingMotorSpeed");
     System.out.println(motorSpeed);
-    
+
     //prints values of the encoder
     double encoderValues = liftmotor.getSelectedSensorPosition();
     System.out.println("printingEncoderValues");

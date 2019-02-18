@@ -33,6 +33,7 @@ public class clawManual extends Subsystem {
 
   public void manualMovement() {
     double analogYL = logitech2.getY(Hand.kLeft);
-    clawMotor.set(ControlMode.PercentOutput, analogYL);
+    double slowMotor = analogYL * .1;
+    clawMotor.set(ControlMode.PercentOutput, slowMotor);
   }
 }

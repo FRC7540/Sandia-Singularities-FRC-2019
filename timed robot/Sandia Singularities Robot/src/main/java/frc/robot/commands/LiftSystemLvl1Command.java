@@ -17,7 +17,7 @@ public class LiftSystemLvl1Command extends Command {
   public LiftSystemLvl1Command() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.liftSubsystem);
+    //requires(Robot.liftSubsystem);
   }
 
   // Called just before this Command runs the first time
@@ -28,28 +28,28 @@ public class LiftSystemLvl1Command extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.liftSubsystem.moveTowardsPosition1();
+    //Robot.liftSubsystem.moveTowardsPosition1();
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
     double position1 = 0;
-    boolean closedSwitch1 = Robot.liftSubsystem.limitSwitch1Check();
-    boolean closedSwitch2 = Robot.liftSubsystem.limitSwitch2Check();
-    if ( (level1 < position1+0.1 && level1 > position1-0.1)
-    || (limitSwitchClosed == closedSwitch1)
-    || (limitSwitchClosed == closedSwitch2) )
-      return true;
-    else
-      return false;
+    //boolean closedSwitch1 = Robot.liftSubsystem.limitSwitch1Check();
+    //boolean closedSwitch2 = Robot.liftSubsystem.limitSwitch2Check();
+    // if ( (level1 < position1+0.1 && level1 > position1-0.1)
+    // || (limitSwitchClosed == closedSwitch1)
+    // || (limitSwitchClosed == closedSwitch2) )
+    //   return true;
+    // else
+    return false;
 
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.liftSubsystem.liftStop();
+    //Robot.liftSubsystem.liftStop();
   }
 
   // Called when another command which requires one or more of the same
