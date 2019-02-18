@@ -65,8 +65,11 @@ public class Robot extends TimedRobot {
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
-    CameraServer camera = CameraServer.getInstance();
-    camera.startAutomaticCapture("cam0", 0);
+    CameraServer camera1 = CameraServer.getInstance();
+    CameraServer camera2 = CameraServer.getInstance();
+    camera1.startAutomaticCapture("cam1", 0);
+    camera2.startAutomaticCapture("cam2", 1);
+
   }
 
   /**
@@ -130,15 +133,16 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testPeriodic() {
+    //adds manual control for liftmotor for testing
     liftmotor.configFactoryDefault();
     liftmotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute);
     double analogYR = logitech1.getY(Hand.kRight);
     liftmotor.set(ControlMode.PercentOutput, analogYR);
-
+    //prints speed output of liftmotor
     double motorSpeed = liftmotor.get();
     System.out.println("printingMotorSpeed");
     System.out.println(motorSpeed);
-    
+    //prints values of the encoder
     double encoderValues = liftmotor.getSelectedSensorPosition();
     System.out.println("printingEncoderValues");
     System.out.println(encoderValues);
