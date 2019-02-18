@@ -13,13 +13,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import com.ctre.phoenix.motorcontrol.FeedbackDevice; 
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import com.ctre.phoenix.motorcontrol.*;
 
 import frc.robot.subsystems.Drive;
-//import frc.robot.subsystems.LiftSystem;
+import frc.robot.subsystems.LiftSystem;
 import frc.robot.subsystems.LiftSystemManual;
 import frc.robot.subsystems.Claw;
 import frc.robot.subsystems.Pivot;
@@ -34,9 +34,10 @@ import edu.wpi.first.cameraserver.CameraServer;
  * project.
  */
 
-/**By popular demand this robot will be named "Tiny Bot Tim" -Software
- * Big Chungus will also be considered
- * Please help this robot find its purpose, it doesn't want to spend its life passing butter
+/**
+ * By popular demand this robot will be named "Tiny Bot Tim" -Software Big
+ * Chungus will also be considered Please help this robot find its purpose, it
+ * doesn't want to spend its life passing butter
  */
 public class Robot extends TimedRobot {
   private static final String kDefaultAuto = "Default";
@@ -46,9 +47,9 @@ public class Robot extends TimedRobot {
 
   private static final WPI_TalonSRX liftmotor = new WPI_TalonSRX(RobotMap.liftMotor);
   private static final XboxController logitech1 = new XboxController(RobotMap.controller1);
-  
+
   public static final Drive driveSubsystem = new Drive();
-  //public static final LiftSystem liftSubsystem = new LiftSystem();
+  public static final LiftSystem liftSubsystem = new LiftSystem();
   public static final Claw clawSubsystem = new Claw();
   public static final Pivot pivotSubsystem = new Pivot();
   public static final LiftSystemManual liftSystemManualSubsystem = new LiftSystemManual();
@@ -65,11 +66,67 @@ public class Robot extends TimedRobot {
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
+
     CameraServer camera1 = CameraServer.getInstance();
     CameraServer camera2 = CameraServer.getInstance();
     camera1.startAutomaticCapture("cam1", 0);
     camera2.startAutomaticCapture("cam2", 1);
+    encoderInit();
+  }
 
+  public static WPI_TalonSRX getTalon() {
+    return liftmotor;
+  }
+
+  public void encoderInit() {
+    /* Config the sensor used for Primary PID and sensor direction */
+    liftmotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, Constants.kPIDLoopIdx,
+        Constants.kTimeoutMs);
+
+    /* Ensure sensor is positive when output is positive */
+    liftmotor.setSensorPhase(Constants.kSensorPhase);
+
+    /**
+     * Set based on what direction you want forward/positive to be. This does not
+     * affect sensor phase.
+     */
+    //liftmotor.setInverted(Constants.kMotorInvert);
+
+    /* Config the peak and nominal outputs, 12V means full */
+    liftmotor.configNominalOutputForward(0, Constants.kTimeoutMs);
+    liftmotor.configNominalOutputReverse(0, Constants.kTimeoutMs);
+    liftmotor.configPeakOutputForward(.2, Constants.kTimeoutMs);
+    liftmotor.configPeakOutputReverse(-.2, Constants.kTimeoutMs);
+
+    /**
+     * Config the allowable closed-loop error, Closed-Loop output will be neutral
+     * within this range. See Table in Section 17.2.1 for native units per rotation.
+     */
+    liftmotor.configAllowableClosedloopError(0, Constants.kPIDLoopIdx, Constants.kTimeoutMs);
+
+    /* Config Position Closed Loop gains in slot0, tsypically kF stays zero. */
+    liftmotor.config_kF(Constants.kPIDLoopIdx, Constants.kGains.kF, Constants.kTimeoutMs);
+    liftmotor.config_kP(Constants.kPIDLoopIdx, Constants.kGains.kP, Constants.kTimeoutMs);
+    liftmotor.config_kI(Constants.kPIDLoopIdx, Constants.kGains.kI, Constants.kTimeoutMs);
+    liftmotor.config_kD(Constants.kPIDLoopIdx, Constants.kGains.kD, Constants.kTimeoutMs);
+
+    /**
+     * Grab the 360 degree position of the MagEncoder's absolute position, and
+     * intitally set the relative sensor to match.
+     */
+    int absolutePosition = liftmotor.getSensorCollection().getPulseWidthPosition();
+
+    /* Mask out overflows, keep bottom 12 bits */
+    absolutePosition &= 0xFFF;
+    if (Constants.kSensorPhase) {
+      absolutePosition *= -1;
+    }
+    if (Constants.kMotorInvert) {
+      absolutePosition *= -1;
+    }
+
+    /* Set the quadrature (relative) sensor to match absolute */
+    liftmotor.setSelectedSensorPosition(absolutePosition, Constants.kPIDLoopIdx, Constants.kTimeoutMs);
   }
 
   /**
@@ -133,18 +190,18 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testPeriodic() {
-    //adds manual control for liftmotor for testing
+    // adds manual control for liftmotor for testing
     liftmotor.configFactoryDefault();
     liftmotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute);
     double analogYR = logitech1.getY(Hand.kRight);
     liftmotor.set(ControlMode.PercentOutput, analogYR);
 
-    //prints speed output of liftmotor
+    // prints speed output of liftmotor
     double motorSpeed = liftmotor.get();
     System.out.println("printingMotorSpeed");
     System.out.println(motorSpeed);
 
-    //prints values of the encoder
+    // prints values of the encoder
     double encoderValues = liftmotor.getSelectedSensorPosition();
     System.out.println("printingEncoderValues");
     System.out.println(encoderValues);

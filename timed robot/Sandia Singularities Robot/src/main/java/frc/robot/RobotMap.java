@@ -19,16 +19,12 @@ public class RobotMap {
     //LiftSystem
     public static final int liftMotor = 1;
     public static final double liftMotorSpeed = .1;
-    public static final double lvl1 = -7038.0;
-    public static final double lvl2 = 1441.0;
-    public static final double lvl3 = 3000.0;
-    public static final double lvl4 = 4365.0;
+    public static final double lvl1 = 3;
+    public static final double lvl2 = 2;
+    public static final double lvl3 = 1;
+    public static final double lvl4 = 0;
 
     //LimitSwitches
     public static final int liftTop = 1;
     public static final int liftBottom = 0;
-    public static final int clawOpen = 3;
-    public static final int clawClosed = 4;
-    public static final int pivotUp = 5;
-    public static final int pivotDown = 6;
 }
