@@ -40,6 +40,7 @@ public class LiftSystem extends Subsystem {
   public void liftInit() {
     liftmotor.configFactoryDefault();
     liftmotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute);
+    liftmotor.set(RobotMap.liftMotorSpeed);
   }
 
   public void liftStop() {
