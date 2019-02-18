@@ -134,6 +134,10 @@ public class Robot extends TimedRobot {
     liftmotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute);
     double analogYR = logitech1.getY(Hand.kRight);
     liftmotor.set(ControlMode.PercentOutput, analogYR);
+
+    double motorSpeed = liftmotor.get();
+    System.out.println("printingMotorSpeed");
+    System.out.println(motorSpeed);
     
     double encoderValues = liftmotor.getSelectedSensorPosition();
     System.out.println("printingEncoderValues");
