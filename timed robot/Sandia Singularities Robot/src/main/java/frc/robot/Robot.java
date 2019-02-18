@@ -196,11 +196,6 @@ public class Robot extends TimedRobot {
     double analogYR = logitech1.getY(Hand.kRight);
     liftmotor.set(ControlMode.PercentOutput, analogYR);
 
-    // prints speed output of liftmotor
-    double motorSpeed = liftmotor.get();
-    System.out.println("printingMotorSpeed");
-    System.out.println(motorSpeed);
-
     // prints values of the encoder
     double encoderValues = liftmotor.getSelectedSensorPosition();
     System.out.println("printingEncoderValues");

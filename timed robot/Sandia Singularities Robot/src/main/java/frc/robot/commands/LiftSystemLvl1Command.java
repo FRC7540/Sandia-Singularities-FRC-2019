@@ -35,8 +35,6 @@ public class LiftSystemLvl1Command extends Command {
   @Override
   protected boolean isFinished() {
     double position1 = 0;
-    //boolean closedSwitch1 = Robot.liftSubsystem.limitSwitch1Check();
-    //boolean closedSwitch2 = Robot.liftSubsystem.limitSwitch2Check();
     if (level1 < position1+0.1 && level1 > position1-0.1)
        return true;
     else
