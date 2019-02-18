@@ -34,8 +34,12 @@ public class LiftSystemLvl3Command extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    double position1 = 20;
-    if (level3 < position1+0.1 && level3 > position1-0.1)
+    double position3 = 20;
+    boolean closedSwitch1 = Robot.liftSubsystem.limitSwitch1Check();
+    boolean closedSwitch2 = Robot.liftSubsystem.limitSwitch2Check();
+    if ( (level3 < position3+0.1 && level3 > position3-0.1)
+      || (limitSwitchClosed == closedSwitch1)
+      || (limitSwitchClosed == closedSwitch2) )
       return true;
     else
       return false;
