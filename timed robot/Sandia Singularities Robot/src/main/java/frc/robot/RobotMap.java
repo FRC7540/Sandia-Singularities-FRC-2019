@@ -26,7 +26,7 @@ public class RobotMap {
 
     //LimitSwitches
     public static final int liftTop = 1;
-    public static final int liftBottom = 2;
+    public static final int liftBottom = 0;
     public static final int clawOpen = 3;
     public static final int clawClosed = 4;
     public static final int pivotUp = 5;
