@@ -142,9 +142,5 @@ public class Robot extends TimedRobot {
     double encoderValues = liftmotor.getSelectedSensorPosition();
     System.out.println("printingEncoderValues");
     System.out.println(encoderValues);
-
-    boolean buttonA = logitech1.getAButton();
-    if (buttonA == true)
-      liftmotor.stopMotor();
   }
 }
