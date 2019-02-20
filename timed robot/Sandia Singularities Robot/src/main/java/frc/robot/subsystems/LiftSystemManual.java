@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.DigitalInput;
 import frc.robot.RobotMap;
 import frc.robot.commands.LiftSystemManualCommand;
 
@@ -23,12 +24,17 @@ public class LiftSystemManual extends Subsystem {
   // here. Call these from Commands.
   private static final XboxController logitech1 = new XboxController(RobotMap.controller1);
   private static final WPI_TalonSRX liftmotor = new WPI_TalonSRX(RobotMap.liftMotor);
+  public static final boolean limitSwitchClosed = false;
+  DigitalInput limitSwitch1;
+  DigitalInput limitSwitch2;
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
     setDefaultCommand(new LiftSystemManualCommand());
+    limitSwitch1 = new DigitalInput(RobotMap.liftBottom);
+    limitSwitch2 = new DigitalInput(RobotMap.liftTop);
   }
 
   public void manualPosition() {
@@ -38,8 +44,9 @@ public class LiftSystemManual extends Subsystem {
   }
 
   public void stopManual() {
-    boolean leftBumper = logitech1.getBumper(Hand.kLeft);
-    if (leftBumper == true)
+    boolean closedSwitch1 = limitSwitch1.get();
+    boolean closedSwitch2 = limitSwitch2.get();
+    if ( (limitSwitchClosed == closedSwitch1) || (limitSwitchClosed == closedSwitch2) )
       liftmotor.stopMotor();
   }
 }
