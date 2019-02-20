@@ -29,10 +29,10 @@ public class OI {
         driverButtonB.whenPressed(new LiftSystemLvl2Command());
 		driverButtonX.whenPressed(new LiftSystemLvl3Command());
 		driverButtonY.whenPressed(new LiftSystemLvl4Command());
-		operatorButtonLeftBumper.whenPressed(new OpenClawCommand());
-		operatorButtonRightBumper.whenPressed(new CloseClawCommand());
-		operatorButtonStart.whenPressed(new pivotDownCommand());
-		operatorButtonBack.whenPressed(new pivotUpCommand());
+		operatorButtonA.whenPressed(new OpenClawCommand());
+		operatorButtonB.whenPressed(new CloseClawCommand());
+		operatorButtonRightBumper.whenPressed(new pivotDownCommand());
+		operatorButtonLeftBumper.whenPressed(new pivotUpCommand());
     }
 
     private static final int LEFT_HORIZ_AXIS = 0;
