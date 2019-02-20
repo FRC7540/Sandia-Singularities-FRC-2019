@@ -28,13 +28,12 @@ public class pivotUpCommand extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    
+    Robot.pivotSubsystem.pivotUp();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.pivotSubsystem.pivotUp();
     //this runs infinitely and only needs to run once
   }
 

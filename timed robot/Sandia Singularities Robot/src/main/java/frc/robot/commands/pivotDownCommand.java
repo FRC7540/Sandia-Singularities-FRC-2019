@@ -9,6 +9,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import java.util.concurrent.TimeUnit;
 
 public class pivotDownCommand extends Command {
 public static final boolean limitSwitchClosed = false;
@@ -22,18 +23,20 @@ public static final boolean limitSwitchClosed = false;
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    
+    Robot.pivotSubsystem.pivotDown();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.pivotSubsystem.pivotDown();
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
+    try {
+      TimeUnit.SECONDS.sleep(1);
+      } catch (InterruptedException e) {}
       return false;
   }
 

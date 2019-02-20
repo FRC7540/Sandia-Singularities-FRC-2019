@@ -9,6 +9,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
+import java.util.concurrent.TimeUnit;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
@@ -27,11 +28,15 @@ public class Pivot extends Subsystem {
   }
 
   public void pivotDown() {
-    pivotMotor.set(ControlMode.PercentOutput, 0.2);
+    pivotMotor.set(ControlMode.PercentOutput, -0.5);
+    try {
+      TimeUnit.MILLISECONDS.sleep(1);
+      } catch (InterruptedException e) {}
+      pivotMotor.set(ControlMode.PercentOutput, 0.5);
   }
 
   public void pivotUp() {
-    pivotMotor.set(ControlMode.PercentOutput, -0.2);
+    pivotMotor.set(ControlMode.PercentOutput, 0.7);
   }
 
   public void pivotStop() {
