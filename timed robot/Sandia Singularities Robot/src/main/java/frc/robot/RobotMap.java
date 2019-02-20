@@ -28,6 +28,6 @@ public class RobotMap {
     public static final double lvl4 = 0;
 
     //LimitSwitches
-    public static final int liftTop = 1;
     public static final int liftBottom = 0;
+    public static final int liftTop = 1;
 }

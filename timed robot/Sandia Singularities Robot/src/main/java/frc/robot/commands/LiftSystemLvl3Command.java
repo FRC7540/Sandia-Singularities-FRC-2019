@@ -12,7 +12,6 @@ import frc.robot.Robot;
 
 public class LiftSystemLvl3Command extends Command {
   private static final double level3 = 20;
-  public static final boolean limitSwitchClosed = false;
 
   public LiftSystemLvl3Command() {
     // Use requires() here to declare subsystem dependencies
@@ -35,11 +34,7 @@ public class LiftSystemLvl3Command extends Command {
   @Override
   protected boolean isFinished() {
     double position3 = 20;
-    boolean closedSwitch1 = Robot.liftSubsystem.limitSwitch1Check();
-    boolean closedSwitch2 = Robot.liftSubsystem.limitSwitch2Check();
-    if ( (level3 < position3+0.1 && level3 > position3-0.1)
-      || (limitSwitchClosed == closedSwitch1)
-      || (limitSwitchClosed == closedSwitch2) )
+    if (level3 < position3+0.1 && level3 > position3-0.1)
       return true;
     else
       return false;

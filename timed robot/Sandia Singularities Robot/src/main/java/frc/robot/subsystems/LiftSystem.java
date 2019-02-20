@@ -33,8 +33,6 @@ public class LiftSystem extends Subsystem {
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-    limitSwitch1 = new DigitalInput(RobotMap.liftBottom);
-    limitSwitch2 = new DigitalInput(RobotMap.liftTop);
   }
 
   public void liftInit() {
@@ -109,13 +107,5 @@ public class LiftSystem extends Subsystem {
     _sb.append("u"); 	// Native units
     
     Robot.getTalon().set(ControlMode.Position, level4);
-  }
-
-  public boolean limitSwitch1Check() {
-    return limitSwitch1.get();
-  }
-
-  public boolean limitSwitch2Check() {
-    return limitSwitch2.get();
   }
 }
