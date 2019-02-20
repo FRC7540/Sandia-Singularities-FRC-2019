@@ -6,36 +6,32 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.subsystems;
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 
 /**
  * Add your docs here.
  */
-public class Claw extends Subsystem {
+public class ArmDrop extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  private static final WPI_VictorSPX clawMotor = new WPI_VictorSPX(RobotMap.clawMotor);
-  
+  public static final WPI_VictorSPX armMotor = new WPI_VictorSPX(RobotMap.armMotor);
+
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
   }
 
-  public void openClaw() {
-    // Move motors open
-    clawMotor.set(ControlMode.PercentOutput, 0.8);
+  public void runMotor() {
+    armMotor.set(ControlMode.PercentOutput, 0.5);
   }
 
-  public void closeClaw() {
-    // Move motors closed
-    clawMotor.set(ControlMode.PercentOutput, -0.8);
-  }
-
-  public void stopClaw() {
-    clawMotor.set(ControlMode.PercentOutput, 0);
+  public void stopMotor() {
+    armMotor.set(ControlMode.PercentOutput, 0);
   }
 }

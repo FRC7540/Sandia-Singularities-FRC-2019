@@ -37,7 +37,7 @@ public static final boolean limitSwitchClosed = false;
     try {
       TimeUnit.SECONDS.sleep(1);
       } catch (InterruptedException e) {}
-      return false;
+      return true;
   }
 
   // Called once after isFinished returns true
