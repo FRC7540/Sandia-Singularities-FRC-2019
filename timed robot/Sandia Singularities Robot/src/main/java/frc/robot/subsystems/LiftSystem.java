@@ -26,6 +26,8 @@ public class LiftSystem extends Subsystem {
   private static final double level4 = RobotMap.lvl4;
   DigitalInput limitSwitch1;
   DigitalInput limitSwitch2;
+  StringBuilder _sb = new StringBuilder();
+	int _loops = 0;
   
   @Override
   public void initDefaultCommand() {
@@ -45,18 +47,67 @@ public class LiftSystem extends Subsystem {
   }
 
   public void moveTowardsPosition1() {
+    double motorOutput = Robot.getTalon().getMotorOutputPercent();
+
+    /* Prepare line to print */
+		_sb.append("\tout:");
+		/* Cast to int to remove decimal places */
+		_sb.append((int) (motorOutput * 100));
+		_sb.append("%");	// Percent
+
+		_sb.append("\tpos:");
+		_sb.append(Robot.getTalon().getSelectedSensorPosition(0));
+    _sb.append("u"); 	// Native units
+
     Robot.getTalon().set(ControlMode.Position, level1);
+    
   }
 
   public void moveTowardsPosition2() {
+    double motorOutput = Robot.getTalon().getMotorOutputPercent();
+
+    /* Prepare line to print */
+		_sb.append("\tout:");
+		/* Cast to int to remove decimal places */
+		_sb.append((int) (motorOutput * 100));
+		_sb.append("%");	// Percent
+
+		_sb.append("\tpos:");
+		_sb.append(Robot.getTalon().getSelectedSensorPosition(0));
+    _sb.append("u"); 	// Native units
+
     Robot.getTalon().set(ControlMode.Position, level2);
   }
 
   public void moveTowardsPosition3() {
+    double motorOutput = Robot.getTalon().getMotorOutputPercent();
+
+    /* Prepare line to print */
+		_sb.append("\tout:");
+		/* Cast to int to remove decimal places */
+		_sb.append((int) (motorOutput * 100));
+		_sb.append("%");	// Percent
+
+		_sb.append("\tpos:");
+		_sb.append(Robot.getTalon().getSelectedSensorPosition(0));
+    _sb.append("u"); 	// Native units
+
     Robot.getTalon().set(ControlMode.Position, level3);
   }
 
   public void moveTowardsPosition4() {
+    double motorOutput = Robot.getTalon().getMotorOutputPercent();
+
+    /* Prepare line to print */
+		_sb.append("\tout:");
+		/* Cast to int to remove decimal places */
+		_sb.append((int) (motorOutput * 100));
+		_sb.append("%");	// Percent
+
+		_sb.append("\tpos:");
+		_sb.append(Robot.getTalon().getSelectedSensorPosition(0));
+    _sb.append("u"); 	// Native units
+    
     Robot.getTalon().set(ControlMode.Position, level4);
   }
 
