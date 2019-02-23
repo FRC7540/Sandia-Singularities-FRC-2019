@@ -28,6 +28,11 @@ public class LiftSystemManual extends Subsystem {
   DigitalInput limitSwitch1;
   DigitalInput limitSwitch2;
 
+  public LiftSystemManual() {
+    liftmotor.configPeakOutputForward(1.0);
+    liftmotor.configPeakOutputReverse(-1.0);
+  }
+
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
@@ -35,6 +40,7 @@ public class LiftSystemManual extends Subsystem {
     setDefaultCommand(new LiftSystemManualCommand());
     limitSwitch1 = new DigitalInput(RobotMap.liftBottom);
     limitSwitch2 = new DigitalInput(RobotMap.liftTop);
+  
   }
 
   public void manualPosition() {
