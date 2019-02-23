@@ -44,10 +44,15 @@ public class LiftSystemManual extends Subsystem {
     liftmotor.set(ControlMode.PercentOutput, motorSlowDown);
   }
 
-  public void stopManual() {
-    boolean closedSwitch1 = limitSwitch1.get();
+  public void stopManualTop() {
     boolean closedSwitch2 = limitSwitch2.get();
-    if ( (limitSwitchClosed == closedSwitch1) || (limitSwitchClosed == closedSwitch2) )
+    if (limitSwitchClosed == closedSwitch2)
+      liftmotor.stopMotor();
+  }
+
+  public void stopManualBottom() {
+    boolean closedSwitch1 = limitSwitch1.get();
+    if (limitSwitchClosed == closedSwitch1)
       liftmotor.stopMotor();
   }
 }
