@@ -39,7 +39,7 @@ public class LiftSystemManual extends Subsystem {
 
   public void manualPosition() {
     double analogRY = logitech1.getY(Hand.kRight);
-    double motorSlowDown = analogRY * .1;
+    double motorSlowDown = analogRY;
     liftmotor.set(ControlMode.PercentOutput, motorSlowDown);
   }
 
