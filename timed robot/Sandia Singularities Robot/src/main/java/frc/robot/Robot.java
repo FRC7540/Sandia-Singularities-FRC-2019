@@ -23,7 +23,7 @@ import frc.robot.subsystems.Drive;
 import frc.robot.subsystems.LiftSystem;
 import frc.robot.subsystems.LiftSystemManual;
 import frc.robot.subsystems.Pivot;
-import frc.robot.subsystems.ClawManual;
+import frc.robot.subsystems.clawManual;
 import frc.robot.subsystems.ArmDrop;
 import edu.wpi.first.cameraserver.CameraServer;
 
@@ -55,7 +55,7 @@ public class Robot extends TimedRobot {
   public static final LiftSystem liftSubsystem = new LiftSystem();
   public static final Pivot pivotSubsystem = new Pivot();
   public static final LiftSystemManual liftSystemManualSubsystem = new LiftSystemManual();
-  public static final ClawManual clawManualSubsystem = new ClawManual();
+  public static final clawManual clawManualSubsystem = new clawManual();
   public static final ArmDrop armDropSubsystem = new ArmDrop();
   public static final OI controllerBinding = new OI();
 
