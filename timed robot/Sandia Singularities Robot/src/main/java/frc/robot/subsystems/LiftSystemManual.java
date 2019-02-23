@@ -40,19 +40,33 @@ public class LiftSystemManual extends Subsystem {
   public void manualPosition() {
     double analogRY = logitech2.getY(Hand.kRight);
     double motorSlowDown = analogRY;
-    System.out.println(analogRY);
-    liftmotor.set(ControlMode.PercentOutput, motorSlowDown);
+    //System.out.println(analogRY);
+    //liftmotor.set(ControlMode.PercentOutput, motorSlowDown);
+    if (motorSlowDown < 0) {
+      if (limitSwitch1.get() == limitSwitchClosed)
+        liftmotor.stopMotor();
+      else 
+        liftmotor.set(ControlMode.PercentOutput, motorSlowDown);
+      }
+    
+      if (motorSlowDown > 0) {
+        if (limitSwitch2.get() == limitSwitchClosed)
+          liftmotor.stopMotor();
+        else 
+          liftmotor.set(ControlMode.PercentOutput, motorSlowDown);
+      }
+
   }
 
-  public void stopManualTop() {
-    boolean closedSwitch2 = limitSwitch2.get();
-    if (limitSwitchClosed == closedSwitch2)
-      liftmotor.stopMotor();
-  }
+  // public void stopManualTop() {
+  //   boolean closedSwitch2 = limitSwitch2.get();
+  //   if (limitSwitchClosed == closedSwitch2)
+  //     liftmotor.stopMotor();
+  // }
 
-  public void stopManualBottom() {
-    boolean closedSwitch1 = limitSwitch1.get();
-    if (limitSwitchClosed == closedSwitch1)
-      liftmotor.stopMotor();
-  }
+  // public void stopManualBottom() {
+  //   boolean closedSwitch1 = limitSwitch1.get();
+  //   if (limitSwitchClosed == closedSwitch1)
+  //     liftmotor.stopMotor();
+  // }
 }
