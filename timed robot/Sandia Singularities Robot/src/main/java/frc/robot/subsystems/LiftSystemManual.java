@@ -22,7 +22,7 @@ import frc.robot.commands.LiftSystemManualCommand;
 public class LiftSystemManual extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  private static final XboxController logitech1 = new XboxController(RobotMap.controller1);
+  private static final XboxController logitech2 = new XboxController(RobotMap.controller2);
   private static final WPI_TalonSRX liftmotor = new WPI_TalonSRX(RobotMap.liftMotor);
   public static final boolean limitSwitchClosed = false;
   DigitalInput limitSwitch1;
@@ -38,8 +38,9 @@ public class LiftSystemManual extends Subsystem {
   }
 
   public void manualPosition() {
-    double analogRY = logitech1.getY(Hand.kRight);
+    double analogRY = logitech2.getY(Hand.kRight);
     double motorSlowDown = analogRY;
+    System.out.println(analogRY);
     liftmotor.set(ControlMode.PercentOutput, motorSlowDown);
   }
 

@@ -28,7 +28,7 @@ public class Pivot extends Subsystem {
   }
 
   public void pivotDown() {
-    pivotMotor.set(ControlMode.PercentOutput, -0.5);
+    pivotMotor.set(ControlMode.PercentOutput, 0.5);
     try {
       TimeUnit.MILLISECONDS.sleep(1);
       } catch (InterruptedException e) {}
