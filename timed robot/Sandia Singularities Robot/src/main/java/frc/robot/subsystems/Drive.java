@@ -41,7 +41,7 @@ public class Drive extends Subsystem {
   public void driveSystem() {
     double analogLY = logitech1.getY(Hand.kLeft);
     double analogLX = logitech1.getX(Hand.kLeft);
-    maindrive.arcadeDrive(analogLY * 0.6, analogLX * 0.6, true);
+    maindrive.arcadeDrive(analogLY * 0.6, analogLX * 0.4, true);
   }
 
 }
