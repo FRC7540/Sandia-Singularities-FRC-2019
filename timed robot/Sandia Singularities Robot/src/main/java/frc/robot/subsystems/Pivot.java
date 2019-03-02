@@ -28,11 +28,11 @@ public class Pivot extends Subsystem {
   }
 
   public void pivotDown() {
-    pivotMotor.set(ControlMode.PercentOutput, -0.1);
+    pivotMotor.set(ControlMode.PercentOutput, -0.3);
   }
 
   public void pivotUp() {
-    pivotMotor.set(ControlMode.PercentOutput, 0.1);
+    pivotMotor.set(ControlMode.PercentOutput, 0.3);
   }
 
   public void pivotStop() {

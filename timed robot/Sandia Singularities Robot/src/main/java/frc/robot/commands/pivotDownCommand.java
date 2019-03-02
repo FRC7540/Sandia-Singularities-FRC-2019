@@ -35,7 +35,7 @@ public static final boolean limitSwitchClosed = false;
   @Override
   protected boolean isFinished() {
     try {
-      TimeUnit.SECONDS.sleep(1);
+      TimeUnit.MILLISECONDS.sleep(50);
       } catch (InterruptedException e) {}
       return true;
   }
