@@ -169,15 +169,16 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
-    switch (m_autoSelected) {
-    case kCustomAuto:
-      // Put custom auto code here
-      break;
-    case kDefaultAuto:
-    default:
-      // Put default auto code here
-      break;
-    }
+    Scheduler.getInstance().run();
+    // switch (m_autoSelected) {
+    // case kCustomAuto:
+    //   // Put custom auto code here
+    //   break;
+    // case kDefaultAuto:
+    // default:
+    //   // Put default auto code here
+    //   break;
+    //}
   }
 
   /**
