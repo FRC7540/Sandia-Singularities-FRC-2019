@@ -29,8 +29,8 @@ public class OI {
 		driverButtonX.whenPressed(new LiftSystemLvl3Command());
 		driverButtonY.whenPressed(new LiftSystemLvl4Command());
 		operatorButtonStart.whenPressed(new armDropCommand());
-		//operatorButtonRightBumper.whenPressed(new pivotDownCommand());
-		//operatorButtonLeftBumper.whenPressed(new pivotUpCommand());
+		operatorButtonLeftBumper.whenPressed(new pivotDownCommand());
+		//operatorButtonRightBumper.whenPressed(new pivotUpCommand());
     }
 
     private static final int LEFT_HORIZ_AXIS = 0;
