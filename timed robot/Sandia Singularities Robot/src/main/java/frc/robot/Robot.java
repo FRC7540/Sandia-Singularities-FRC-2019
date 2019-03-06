@@ -195,20 +195,13 @@ public class Robot extends TimedRobot {
   @Override
   public void testPeriodic() {
     // adds manual control for liftmotor for testing
-    liftmotor.configFactoryDefault();
-    liftmotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute);
     double analogYR = logitech1.getY(Hand.kRight);
     double slowMotor = analogYR * .1;
     liftmotor.set(ControlMode.PercentOutput, slowMotor);
 
     //manual control for pivot
     double analogYR2 = logitech2.getY(Hand.kRight);
-    double slowMotor2 = analogYR2 *.1;
+    double slowMotor2 = analogYR2;
     pivotmotor.set(ControlMode.PercentOutput, slowMotor2);
-
-    // prints values of the encoder
-    double encoderValues = liftmotor.getSelectedSensorPosition();
-    System.out.println("printingEncoderValues");
-    System.out.println(encoderValues);
   }
 }
