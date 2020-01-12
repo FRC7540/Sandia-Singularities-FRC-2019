@@ -11,12 +11,14 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
+
+import edu.wpi.first.cameraserver.CameraServer;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
-import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.GenericHID.Hand;
 import com.ctre.phoenix.motorcontrol.*;
 
 import frc.robot.subsystems.Drive;
@@ -25,7 +27,6 @@ import frc.robot.subsystems.LiftSystemManual;
 import frc.robot.subsystems.Pivot;
 import frc.robot.subsystems.clawManual;
 import frc.robot.subsystems.ArmDrop;
-import edu.wpi.first.cameraserver.CameraServer;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -36,8 +37,8 @@ import edu.wpi.first.cameraserver.CameraServer;
  */
 
 /**
- * By popular demand this robot will be named "Tiny Bot Tim" -Software Big
- * Chungus will also be considered Please help this robot find its purpose, it
+ * By popular demand this robot will be named "Tiny Bot Tim" -Software. Big
+ * Chungus will also be considered. Please help this robot find its purpose, it
  * doesn't want to spend its life passing butter
  */
 public class Robot extends TimedRobot {
