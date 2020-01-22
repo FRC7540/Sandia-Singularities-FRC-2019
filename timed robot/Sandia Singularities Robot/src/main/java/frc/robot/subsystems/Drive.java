@@ -29,7 +29,7 @@ public class Drive extends Subsystem {
   private static final PWMVictorSPX motor4 = new PWMVictorSPX(RobotMap.rightMotors[1]);
   SpeedControllerGroup leftmotors = new SpeedControllerGroup(motor1, motor2);
   SpeedControllerGroup rightmotors = new SpeedControllerGroup(motor3, motor4);
-  DifferentialDrive maindrive = new DifferentialDrive(leftmotors, rightmotors);
+  DifferentialDrive maindrive = new DifferentialDrive(motor3, motor4);
 
   @Override
   public void initDefaultCommand() {
